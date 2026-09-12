@@ -1,0 +1,9 @@
+provincia,nombre_padron,nombre_georef,departamento_id,tipo_equivalencia,estado,evidencia,observaciones
+Buenos Aires,CORONEL DE MARINA L ROSALES,Coronel de Marina Leonardo Rosales,06182,abreviatura,pendiente,"No se halló tabla oficial que vincule explícitamente la inicial L con Leonardo","No asignar automáticamente"
+La Rioja,CORONEL FELIPE VARELA,General Felipe Varela,46028,denominación administrativa,pendiente,"Fuentes oficiales usan denominaciones Coronel y General; no se confirmó equivalencia normativa","No asignar automáticamente"
+La Rioja,GENERAL ANGEL V PEÑALOZA,Ángel Vicente Peñaloza,46056,abreviatura,confirmado,"Tabla oficial nacional vincula General Angel V. Peñaloza con el municipio General Ángel Vicente Peñaloza","Argentina.gob.ar municipios-seleccionados-7-01-22.pdf"
+La Rioja,GENERAL JUAN F QUIROGA,General Juan Facundo Quiroga,46070,abreviatura,confirmado,"Tabla oficial nacional vincula General Juan F. Quiroga con el municipio General Juan Facundo Quiroga","Argentina.gob.ar municipios-seleccionados-7-01-22.pdf"
+La Rioja,GENERAL OCAMPO,General Ortiz de Ocampo,46084,denominación administrativa,pendiente,"Fuentes oficiales usan General Ocampo y General Ortiz de Ocampo; no se confirmó equivalencia normativa","No asignar automáticamente"
+San Luis,GENERAL JUAN MARTIN DE PUEYRREDON,Juan Martín de Pueyrredón,74056,denominación administrativa,pendiente,"No se halló tabla oficial que vincule explícitamente ambas denominaciones","No asignar automáticamente"
+Santiago del Estero,JUAN F IBARRA,Juan Felipe Ibarra,86098,abreviatura,pendiente,"No se halló tabla oficial que expanda explícitamente la inicial F","No asignar automáticamente"
+Tucumán,JUAN B ALBERDI,Juan Bautista Alberdi,90042,abreviatura,pendiente,"No se halló tabla oficial que expanda explícitamente la inicial B","No asignar automáticamente"
