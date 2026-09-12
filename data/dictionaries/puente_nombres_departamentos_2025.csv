@@ -1,0 +1,12 @@
+provincia_fuente,departamento_fuente,provincia_id,departamento_id,departamento_nombre_georef,tipo_diferencia,estado,evidencia
+Buenos Aires,CORONEL DE MARINA L ROSALES,06,06182,Coronel de Marina Leonardo Rosales,abreviatura,pendiente,No se halló equivalencia oficial explícita para expandir la inicial L
+Jujuy,DOCTOR MANUEL BELGRANO,38,38021,Dr. Manuel Belgrano,abreviatura,confirmado,RA escribe Doctor y GeoRef abrevia el mismo tratamiento como Dr.; el resto del nombre y la provincia coinciden exactamente
+La Rioja,CORONEL FELIPE VARELA,46,46028,General Felipe Varela,denominación administrativa,pendiente,No se halló equivalencia oficial explícita para el cambio Coronel-General
+La Rioja,GENERAL ANGEL V PEÑALOZA,46,46056,Ángel Vicente Peñaloza,denominación administrativa,pendiente,No se halló equivalencia oficial explícita que confirme la variante completa
+La Rioja,GENERAL JUAN F QUIROGA,46,46070,General Juan Facundo Quiroga,abreviatura,pendiente,No se halló equivalencia oficial explícita para expandir la inicial F
+La Rioja,GENERAL OCAMPO,46,46084,General Ortiz de Ocampo,denominación administrativa,pendiente,No se halló equivalencia oficial explícita que confirme la omisión Ortiz de
+Misiones,LIBERTADOR GRL SAN MARTIN,54,54077,Libertador General San Martín,abreviatura,confirmado,RA abrevia General como GRL; los demás términos y la provincia coinciden exactamente con GeoRef
+San Luis,GENERAL JUAN MARTIN DE PUEYRREDON,74,74056,Juan Martín de Pueyrredón,denominación administrativa,pendiente,No se halló equivalencia oficial explícita que confirme la variante completa
+San Luis,LIBERTADOR GRL SAN MARTIN,74,74063,Libertador General San Martín,abreviatura,confirmado,RA abrevia General como GRL; los demás términos y la provincia coinciden exactamente con GeoRef
+Santiago del Estero,JUAN F IBARRA,86,86098,Juan Felipe Ibarra,abreviatura,pendiente,No se halló equivalencia oficial explícita para expandir la inicial F
+Tucumán,JUAN B ALBERDI,90,90042,Juan Bautista Alberdi,abreviatura,pendiente,No se halló equivalencia oficial explícita para expandir la inicial B
