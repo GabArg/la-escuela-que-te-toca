@@ -1,0 +1,71 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+.jupyter/
+
+# Herramientas de desarrollo y pruebas
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Streamlit y credenciales
+.streamlit/secrets.toml
+secrets.toml
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Datos pesados y artefactos generados
+data/raw/**
+!data/raw/.gitkeep
+data/processed/**
+!data/processed/.gitkeep
+*.parquet
+*.feather
+*.arrow
+*.sqlite
+*.db
+outputs/charts/**
+!outputs/charts/.gitkeep
+outputs/maps/**
+!outputs/maps/.gitkeep
+outputs/tables/**
+!outputs/tables/.gitkeep
+outputs/reports/**
+!outputs/reports/.gitkeep
+
+# Temporales y sistema operativo
+*.tmp
+*.temp
+*.log
+~$*
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
