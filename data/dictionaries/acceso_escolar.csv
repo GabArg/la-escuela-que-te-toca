@@ -1,0 +1,12 @@
+variable,fuente,descripcion,unidad,anio,granularidad,tipo,comparabilidad,limitaciones
+anio,"RA e INDEC Censo 2022",Año de referencia utilizado,año,2022,departamento-grupo de edad,identificador,Alta,"RA refiere al 30 de abril; el Censo se realizó entre marzo y mayo"
+provincia_id,GeoRef Argentina,Identificador oficial GeoRef de provincia,texto,2022,provincia,identificador,Alta,Se asigna solo mediante coincidencia territorial documentada
+departamento_id,GeoRef Argentina,Identificador oficial GeoRef de departamento o unidad equivalente,texto,2022,departamento o equivalente,identificador,Alta,No se asigna mediante similitud difusa
+grupo_edad,"Construcción interna desde edades simples RA e INDEC",Grupo de edad común: 4-5; 6-11; 12-14; 15-17,texto,2022,departamento-grupo de edad,categoría,Alta,No equivale por sí solo a un nivel educativo
+poblacion,"INDEC Censo 2022, cuadros est_c4",Población residente censada del grupo de edad,personas,2022,departamento-grupo de edad,conteo,Alta,"Excluye población en situación de calle según nota del cuadro; asignación por residencia"
+matricula,Relevamiento Anual 2022 - Matrícula por edad,Matrícula observada de la edad correspondiente,estudiantes,2022,departamento-grupo de edad,conteo,Alta,"Asignación territorial por localización educativa; incluye cualquier grado/nivel publicado"
+cobertura_dato,Construcción interna,Disponibilidad conjunta de población y matrícula,categoría,2022,departamento-grupo de edad,calidad,Alta,No confundir ausencia con cero
+indicador_acceso,Construcción interna,Cociente matrícula RA sobre población residente Censo 2022,proporción,2022,departamento-grupo de edad,cociente exploratorio,Media,"No es tasa oficial de escolarización; puede superar 1 por movilidad y diferencias de universos"
+indicador_fuera_rango,Construcción interna,Indica cociente matrícula/población mayor que 1,booleano,2022,departamento-grupo de edad,control de calidad,Alta,Fuera de rango para una tasa pero posible para este cociente no residencial
+tipo_indicador,Construcción interna,Denominación metodológica explícita del cociente,texto,2022,departamento-grupo de edad,metadato,Alta,Evita rotularlo como tasa oficial
+observaciones,Construcción interna,Advertencias de interpretación,texto,2022,departamento-grupo de edad,metadato,Alta,Debe acompañar cualquier publicación del indicador
