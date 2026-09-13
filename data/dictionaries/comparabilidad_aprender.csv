@@ -1,0 +1,13 @@
+anio,nivel,grado,area,variable,comparable_temporalmente,nivel_comparabilidad,motivo,observaciones
+2017,Secundaria,5.º/6.º,Lengua,nivel_desempeno,condicional,Media,"Coinciden nivel, grado y área, pero deben verificarse escala, puntos de corte, cobertura y tratamiento de no respuesta.",No se construyó serie.
+2017,Secundaria,5.º/6.º,Matemática,nivel_desempeno,condicional,Media,"Coinciden nivel, grado y área, pero deben verificarse escala, puntos de corte, cobertura y tratamiento de no respuesta.",No se construyó serie.
+2018,Primaria,6.º,"Lengua; Matemática",nivel_desempeno,condicional,Media,"Coincide el grado con 2021/2023, pero falta auditoría psicométrica completa.",No se construyó serie.
+2019,Secundaria,5.º/6.º,"Lengua; Matemática",nivel_desempeno,condicional,Media,"Coincide el universo nominal con 2022/2024; faltan controles de escala y cobertura.",No se construyó serie.
+2021,Primaria,6.º,"Lengua; Matemática",nivel_desempeno,condicional,Baja,"Contexto extraordinario posterior a la pandemia y cambios de condiciones de aplicación.",Mantener corte separado.
+2022,Primaria,6.º,"Lengua; Matemática",nivel_desempeno,no,Baja,"Operativo muestral frente a censales y dominio territorial limitado.",Solo estimaciones ponderadas en dominio permitido.
+2022,Secundaria,5.º/6.º,"Lengua; Matemática",nivel_desempeno,condicional,Media,"Mismo nivel/áreas que 2024, pero no basta el nombre de variable para asegurar equivalencia.",No se construyó serie.
+2023,Primaria,6.º,"Lengua; Matemática",nivel_desempeno,condicional,Media,"Censal y agregado departamental, pero no es comparable con 3.º grado 2024.",Mejor corte primario territorial reciente.
+2024,Primaria,3.º,Lengua,nivel_desempeno,no,No comparable,"Cambian grado, diseño muestral y dominio de inferencia respecto de primaria 2023.",No integrar a serie departamental.
+2024,Secundaria,5.º/6.º,"Lengua; Matemática",nivel_desempeno,sí,Alta,"Comparable internamente entre territorios dentro del mismo operativo, respetando cobertura y ponderación publicada.",Alta solo para corte transversal 2024; no implica serie temporal alta.
+2024,Secundaria,5.º/6.º,"Lengua; Matemática",puntaje,no,No comparable,"La base agregada seleccionada no publica puntaje departamental validado.",No inventar ni derivar score.
+2016-2025,Todos,variable,"cuestionarios de contexto",respuestas_contexto,por verificar,Baja,"Los instrumentos y categorías cambian entre operativos.",No usar en series sin auditoría pregunta por pregunta.
