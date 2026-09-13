@@ -1,0 +1,54 @@
+"""Vista histórica basada en transformaciones ya auditadas."""
+from __future__ import annotations
+
+import pandas as pd
+import plotly.graph_objects as go
+import streamlit as st
+
+from app.components.perfil import format_value, profile_row
+
+HISTORY_OPTIONS = {
+    "Sobreedad": ("proporcion_sobreedad", "sobreedad_2025"),
+    "Repetición": ("proporcion_repitentes", "repeticion_2025"),
+    "Salidos sin pase": ("proporcion_salidos_sin_pase", "salidos_sin_pase_2025"),
+}
+
+
+def history_series(history: pd.DataFrame, territory_id: str, indicator: str) -> pd.DataFrame:
+    metric = HISTORY_OPTIONS[indicator][0]
+    columns = ["anio", metric]
+    result = history.loc[history.departamento_id.eq(territory_id), columns].sort_values("anio").rename(columns={metric: "valor"})
+    return result
+
+
+def history_summary(row: pd.Series, indicator: str) -> dict[str, object]:
+    metric, current = HISTORY_OPTIONS[indicator]
+    return {
+        "valor_2025": row.get(current),
+        "mediana_historica": row.get(f"{metric}_mediana_historica"),
+        "clasificacion": row.get(f"{metric}_clasificacion_historica"),
+        "n_anios": row.get(f"{metric}_n_anios_historicos"),
+    }
+
+
+def render_history(profiles: pd.DataFrame, history: pd.DataFrame, territory_id: str) -> None:
+    row = profile_row(profiles, territory_id)
+    st.title("¿Esto viene de antes?")
+    st.caption(f"{row.departamento_nombre}, {row.provincia_nombre}")
+    indicator = st.selectbox("Indicador", list(HISTORY_OPTIONS), key="history_indicator")
+    series = history_series(history, territory_id, indicator)
+    summary = history_summary(row, indicator)
+    cols = st.columns(3)
+    cols[0].metric("Valor 2025", format_value(summary["valor_2025"], "percent_ratio"))
+    cols[1].metric("Mediana histórica", format_value(summary["mediana_historica"], "percent_ratio"))
+    classification = summary["clasificacion"] if pd.notna(summary["clasificacion"]) else "Sin clasificación"
+    cols[2].metric("Patrón histórico", classification)
+    if series.empty or series.valor.notna().sum() == 0:
+        st.info("No hay serie histórica identificable para este territorio e indicador.")
+        return
+    figure = go.Figure(go.Scatter(x=series.anio, y=series.valor * 100, mode="lines+markers", connectgaps=False, line_color="#3E5C76"))
+    figure.add_vrect(x0=2020, x1=2022, fillcolor="#D8C3A5", opacity=.25, line_width=0,
+                     annotation_text="Interpretar con cautela", annotation_position="top left")
+    figure.update_layout(height=430, xaxis_title="Año", yaxis_title="Porcentaje", margin=dict(l=20, r=20, t=35, b=20))
+    st.plotly_chart(figure, width="stretch")
+    st.caption("Serie descriptiva RA 2011–2025. La ruptura 2020–2022 puede reflejar condiciones administrativas o metodológicas; no se atribuyen causas.")

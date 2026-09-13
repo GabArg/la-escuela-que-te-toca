@@ -32,7 +32,7 @@ La información educativa suele encontrarse dispersa entre distintas fuentes, pe
 
 ## Estado actual
 
-Proyecto en etapa inicial: organización del repositorio, inventario de fuentes y definición metodológica. Todavía no se han producido análisis, resultados ni visualizaciones finales.
+El proyecto cuenta con pipelines territoriales y educativos auditados, perfiles integrados, series RA 2011–2025, contexto Censo 2022, Aprender 2024 y un motor de pares estructuralmente comparables. La primera versión funcional del MVP presenta estas capacidades en Streamlit; el diseño visual todavía es preliminar.
 
 ## Datos y transparencia
 
@@ -48,10 +48,40 @@ La versión pública utiliza **únicamente datos abiertos**, con prioridad para 
 - `outputs/`: productos generados.
 - `tests/`: pruebas automatizadas.
 
+## Instalación
+
+```bash
+python -m venv .venv
+# Activar el entorno según el sistema operativo
+python -m pip install -r requirements.txt
+```
+
+## Datos procesados
+
+Los parquets no se versionan. Cada módulo de `src/ingestion`, `src/features` y `src/analysis` expone una función o ejecución reproducible. Para reconstruir las capas finales, una vez disponibles sus insumos raw:
+
+```bash
+python -m src.features.perfiles_territoriales
+python -m src.analysis.pares_comparables
+```
+
+La app intenta llamar esos módulos si falta una salida final; no duplica la lógica analítica.
+
+## Ejecutar la app
+
+```bash
+streamlit run app/app.py
+```
+
+La navegación incluye Inicio, Perfil territorial, Historia, Comparables, Dónde mirar y Metodología.
+
+## Alcance interpretativo
+
+Los resultados son exploratorios y descriptivos. Las asociaciones no demuestran causalidad, los pares son similares por estructura y contexto —no por desempeño— y ninguna ausencia se interpreta como cero. La aplicación no crea un score ni un ranking educativo.
+
 ## Próximos pasos
 
-- Completar el inventario de fuentes oficiales.
-- Definir unidades geográficas, períodos e indicadores.
-- Establecer criterios de calidad, trazabilidad y actualización.
-- Implementar el primer flujo reproducible de ingestión y limpieza.
-
+- Probar el MVP con usuarios reales.
+- Refinar accesibilidad e identidad visual.
+- Incorporar el mapa localizador sin usarlo como ranking.
+- Versionar outputs y procesos de actualización.
