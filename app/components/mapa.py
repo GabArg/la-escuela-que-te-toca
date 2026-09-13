@@ -2,16 +2,13 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 from typing import Any
 
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-from app.components.data import DataAvailabilityError, artifact_path
-
-ROOT = Path(__file__).resolve().parents[2]
+from app.components.data import artifact_path
 
 MAP_VARIABLES = {
     "Mapa neutro": (None, "", "descriptivo"),

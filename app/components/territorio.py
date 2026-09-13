@@ -40,6 +40,11 @@ def render_selector(profiles: pd.DataFrame, location: str = "sidebar") -> str:
     if st.session_state.get(territory_key) not in ids:
         st.session_state[territory_key] = current_id if current_id in ids else ids[0]
     labels = available.assign(departamento_id=available.departamento_id.astype(str)).set_index("departamento_id").departamento_nombre.to_dict()
-    selected = container.selectbox("Departamento o unidad equivalente", ids, format_func=lambda value: labels[value], key=territory_key)
+    selected = container.selectbox(
+        "Departamento o unidad equivalente",
+        ids,
+        format_func=lambda value: labels.get(value, str(value)),
+        key=territory_key,
+    )
     st.session_state.territory_id = selected
     return selected

@@ -45,3 +45,13 @@ def test_all_views_render_without_exceptions():
         app.run()
         assert not app.exception
         assert not app.error
+
+
+def test_cross_province_state_transition_is_tolerant():
+    app = AppTest.from_file("app/app.py", default_timeout=40)
+    app.run()
+    app.selectbox(key="province_sidebar").select("Formosa").run()
+    app.selectbox(key="territory_sidebar").select_index(8).run()
+    assert app.session_state["territory_id"] == "34063"
+    assert not app.exception
+    assert not app.error

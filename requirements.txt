@@ -1,12 +1,12 @@
-pandas
+pandas==2.3.3
 numpy
 geopandas
 matplotlib
-plotly
-streamlit
+plotly==6.9.0
+streamlit==1.50.0
 scikit-learn
-pyarrow
+pyarrow==25.0.1
+scipy==1.18.0
 requests
 openpyxl
 jupyter
-

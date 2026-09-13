@@ -2,7 +2,7 @@
 
 ## Diagnóstico
 
-La aplicación necesita perfiles, señales, pares, brechas, serie histórica y GeoJSON. En el repositorio actual, data/raw y data/processed están ignorados. Un clon limpio no puede iniciar: los parquets no estarán presentes y la reconstrucción automática tampoco será posible porque sus insumos raw están igualmente ausentes.
+La aplicación necesita perfiles, señales, pares, brechas, serie histórica y GeoJSON. data/raw y data/processed siguen ignorados; el bundle versionado en data/public resuelve la ejecución desde un clon limpio.
 
 ## Estrategia implementada
 
@@ -12,7 +12,7 @@ Se genera un **bundle de aplicación versionado** en data/public, compuesto solo
 - senales_prioritarias_perfiles.parquet;
 - pares_comparables.parquet;
 - brechas_entre_pares.parquet;
-- ra_2011_2025_long.parquet, o una proyección mínima para las series mostradas;
+- ra_2011_2025_long.parquet;
 - departamentos_argentina.geojson;
 - manifiesto con versión, fecha, tamaño y SHA-256.
 
@@ -24,4 +24,4 @@ El bundle completo ocupa 2,73 MB. Para este proyecto se recomienda versionarlo d
 2. GitHub Release u object storage: útil si el bundle crece, pero suma dependencia externa.
 3. Git LFS o Docker: innecesarios para el tamaño actual.
 
-No se recomienda reconstruir todo al iniciar Streamlit. Antes de cambiar .gitignore se debe decidir hosting, tamaño máximo y política de actualización.
+No se reconstruye en producción: el fallback queda desactivado por defecto. La política de actualización está documentada en public_bundle.md.

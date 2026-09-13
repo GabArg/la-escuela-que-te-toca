@@ -44,7 +44,7 @@ def artifact_path(name: str) -> Path:
     local_path = PROCESSED / name
     if local_path.exists():
         return local_path
-    if os.environ.get("APP_ALLOW_PIPELINE_REBUILD", "1") != "1":
+    if os.environ.get("APP_ALLOW_PIPELINE_REBUILD", "0") != "1":
         raise DataAvailabilityError(f"Falta {name} en el bundle público.")
     try:
         if name in {"perfiles_territoriales.parquet", "senales_prioritarias_perfiles.parquet"}:
@@ -65,25 +65,39 @@ def artifact_path(name: str) -> Path:
 
 @st.cache_data(show_spinner=False)
 def load_profiles() -> pd.DataFrame:
-    return pd.read_parquet(artifact_path("perfiles_territoriales.parquet"))
+    return _read_parquet("perfiles_territoriales.parquet")
 
 
 @st.cache_data(show_spinner=False)
 def load_signals() -> pd.DataFrame:
-    return pd.read_parquet(artifact_path("senales_prioritarias_perfiles.parquet"))
+    return _read_parquet("senales_prioritarias_perfiles.parquet")
 
 
 @st.cache_data(show_spinner=False)
 def load_pairs() -> pd.DataFrame:
-    return pd.read_parquet(artifact_path("pares_comparables.parquet"))
+    return _read_parquet("pares_comparables.parquet")
 
 
 @st.cache_data(show_spinner=False)
 def load_gaps() -> pd.DataFrame:
-    return pd.read_parquet(artifact_path("brechas_entre_pares.parquet"))
+    return _read_parquet("brechas_entre_pares.parquet")
 
 
 @st.cache_data(show_spinner=False)
 def load_history() -> pd.DataFrame:
     from src.analysis.ra_historico import build_indicators
-    return build_indicators(pd.read_parquet(artifact_path("ra_2011_2025_long.parquet")))
+    try:
+        return build_indicators(_read_parquet("ra_2011_2025_long.parquet"))
+    except DataAvailabilityError:
+        raise
+    except Exception as exc:
+        raise DataAvailabilityError("No se pudo preparar la serie histórica del bundle público.") from exc
+
+
+def _read_parquet(name: str) -> pd.DataFrame:
+    try:
+        return pd.read_parquet(artifact_path(name))
+    except DataAvailabilityError:
+        raise
+    except Exception as exc:
+        raise DataAvailabilityError(f"No se pudo leer {name}; verificá el bundle público.") from exc

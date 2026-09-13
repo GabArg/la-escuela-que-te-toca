@@ -12,16 +12,16 @@
 
 - [x] requirements.txt no contiene rutas locales.
 - [x] Incluye Streamlit, Plotly, pandas y pyarrow.
-- [ ] Probar instalación limpia en Linux.
-- [ ] Congelar versiones tras validar el entorno objetivo; hoy están sin pin.
+- [ ] Probar instalación limpia en Linux/Community Cloud.
+- [x] Fijar las dependencias críticas de serving al entorno validado.
 
 ## Datos
 
 - [x] Preparar bundle procesado versionado.
 - [x] Verificar hashes al cargar.
 - [x] Confirmar los seis artefactos esenciales, incluido el GeoJSON.
-- [ ] Medir tamaño de descarga y memoria en hosting.
-- [ ] Probar un arranque sin caché y otro con caché.
+- [x] Medir memoria local aproximada: 159 MB para datos y GeoJSON, más overhead.
+- [x] Probar arranque limpio con bundle y sin processed.
 
 ## Operación
 

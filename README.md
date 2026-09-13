@@ -66,7 +66,7 @@ Para regenerarlo desde outputs procesados locales:
 python scripts/build_public_bundle.py
 ```
 
-En producción se recomienda definir `APP_ALLOW_PIPELINE_REBUILD=0`. Los hashes, esquemas y tamaños están en `data/public/manifest.json`. Véase `docs/deploy/public_bundle.md`.
+La reconstrucción está desactivada por defecto. Para habilitarla únicamente en desarrollo, definir `APP_ALLOW_PIPELINE_REBUILD=1`. Los hashes, esquemas y tamaños están en `data/public/manifest.json`.
 
 ## Reconstrucción para desarrollo
 
@@ -86,6 +86,16 @@ streamlit run app/app.py
 ```
 
 La navegación incluye Inicio, Perfil territorial, Historia, Comparables, Dónde mirar y Metodología.
+
+## Streamlit Community Cloud
+
+- Repositorio y rama: la rama `master` que contenga el bundle.
+- Entrypoint: `app/app.py`.
+- Python recomendado y validado: 3.12.
+- Secrets: no requeridos.
+- Configuración visual: `.streamlit/config.toml`.
+
+Las instrucciones completas están en `docs/deploy/streamlit_cloud.md`.
 
 ## Alcance interpretativo
 

@@ -6,7 +6,10 @@ import sys
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
+from app.components import data as app_data
+from app.components.data import DataAvailabilityError
 from scripts.build_public_bundle import ARTIFACTS, inspect_artifact
 
 PUBLIC = Path("data/public")
@@ -62,3 +65,33 @@ def test_clean_clone_loading_without_processed(tmp_path):
 def test_manifest_contains_no_absolute_local_paths():
     text = (PUBLIC / "manifest.json").read_text(encoding="utf-8")
     assert "C:\\" not in text and "/Users/" not in text and "/home/" not in text
+
+
+def test_rebuild_is_disabled_by_default(monkeypatch, tmp_path):
+    monkeypatch.delenv("APP_ALLOW_PIPELINE_REBUILD", raising=False)
+    monkeypatch.setattr(app_data, "PUBLIC", tmp_path / "public")
+    monkeypatch.setattr(app_data, "PROCESSED", tmp_path / "processed")
+    with pytest.raises(DataAvailabilityError, match="Falta"):
+        app_data.artifact_path("perfiles_territoriales.parquet")
+
+
+def test_missing_manifest_is_legible(monkeypatch, tmp_path):
+    public = tmp_path / "public"
+    public.mkdir()
+    (public / "perfiles_territoriales.parquet").write_bytes(b"not-a-parquet")
+    monkeypatch.setattr(app_data, "PUBLIC", public)
+    with pytest.raises(DataAvailabilityError, match="manifest"):
+        app_data.artifact_path("perfiles_territoriales.parquet")
+
+
+def test_hash_mismatch_is_legible(monkeypatch, tmp_path):
+    public = tmp_path / "public"
+    public.mkdir()
+    artifact = public / "perfiles_territoriales.parquet"
+    artifact.write_bytes(b"corrupt")
+    (public / "manifest.json").write_text(
+        json.dumps({"files": [{"name": artifact.name, "sha256": "0" * 64}]}), encoding="utf-8"
+    )
+    monkeypatch.setattr(app_data, "PUBLIC", public)
+    with pytest.raises(DataAvailabilityError, match="integridad"):
+        app_data.artifact_path(artifact.name)
