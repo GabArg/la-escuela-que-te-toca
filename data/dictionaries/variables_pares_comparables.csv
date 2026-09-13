@@ -1,0 +1,26 @@
+variable,dimension,usar_en_similitud,motivo,transformacion,normalizacion,tratamiento_nulos,peso,observaciones
+poblacion_total,territorio,base,Tamaño territorial básico; evita comparar escalas demográficas extremas,log1p,mediana/IQR y recorte [-5;5],comparación solo con valor compartido,0.111111,Además se exige razón poblacional no mayor a 10
+superficie_km2,territorio,base,Extensión territorial muy asimétrica,log1p,mediana/IQR y recorte [-5;5],comparación solo con valor compartido,0.111111,GeoRef; área calculada en proyección apropiada por módulo previo
+densidad_poblacional,territorio,base,Estructura de concentración territorial muy asimétrica,log1p,mediana/IQR y recorte [-5;5],comparación solo con valor compartido,0.111111,Derivada con población 2022
+porcentaje_hogares_internet_2022,contexto,base,Conectividad estructural del hogar,identidad,mediana/IQR y recorte [-5;5],comparación solo con valor compartido,0.066667,Censo 2022
+porcentaje_hogares_computadora_2022,contexto,base,Disponibilidad digital del hogar,identidad,mediana/IQR y recorte [-5;5],comparación solo con valor compartido,0.066667,Censo 2022
+porcentaje_hogares_agua_red_publica_2022,contexto,base,Condición de servicios del hogar,identidad,mediana/IQR y recorte [-5;5],comparación solo con valor compartido,0.066667,Censo 2022
+porcentaje_hogares_cloaca_2022,contexto,base,Condición de saneamiento del hogar,identidad,mediana/IQR y recorte [-5;5],comparación solo con valor compartido,0.066667,Censo 2022
+porcentaje_viviendas_rancho_casilla_2022,contexto,base,Condición habitacional con fuerte asimetría,log1p,mediana/IQR y recorte [-5;5],comparación solo con valor compartido,0.066667,Censo 2022
+proporcion_cue_rurales_2022,oferta,base,Composición rural de la oferta,identidad,mediana/IQR y recorte [-5;5],comparación solo con valor compartido,0.083333,Se exige diferencia no mayor a 0.50
+relacion_cue_secundaria_primaria_2022,oferta,base,Estructura relativa de niveles institucionales,identidad,mediana/IQR y recorte [-5;5],comparación solo con valor compartido,0.083333,CUE; no CUE-anexo
+localizaciones_por_1000_poblacion_escolar_2022,oferta,base,Despliegue relativo a población escolar con asimetría,log1p,mediana/IQR y recorte [-5;5],comparación solo con valor compartido,0.083333,No mide vacantes
+localizaciones_por_100_km2_2022,oferta,base,Despliegue espacial con fuerte asimetría,log1p,mediana/IQR y recorte [-5;5],comparación solo con valor compartido,0.083333,No mide accesibilidad efectiva
+poblacion_4_17,territorio,opcional,Redundante con población total en la versión base,log1p,mediana/IQR,excluir si falta,0,Podría reemplazar población total en sensibilidad futura
+localizaciones_total_2022,oferta,opcional,Conteo absoluto redundante con población y razones de oferta,log1p,mediana/IQR,excluir si falta,0,No entra a versión base
+establecimientos_cue_secundaria_2022,oferta,opcional,Conteo absoluto redundante con estructura y oferta relativa,log1p,mediana/IQR,excluir si falta,0,No entra a versión base
+porcentaje_asistencia_15_17_2022,acceso,prohibida,Es un resultado educativo censal y generaría circularidad,ninguna,ninguna,no aplica,0,Solo se compara después de fijar pares
+sobreedad_2025,trayectoria,prohibida,Resultado educativo,ninguna,ninguna,no aplica,0,Solo para brecha posterior
+repeticion_2025,trayectoria,prohibida,Resultado educativo,ninguna,ninguna,no aplica,0,Solo para brecha posterior
+salidos_sin_pase_2025,trayectoria,prohibida,Resultado educativo,ninguna,ninguna,no aplica,0,Solo para brecha posterior
+promocion_2025,trayectoria,prohibida,Resultado educativo,ninguna,ninguna,no aplica,0,No entra a similitud
+no_promocion_2025,trayectoria,prohibida,Resultado educativo,ninguna,ninguna,no aplica,0,No entra a similitud
+lengua_satisfactorio_o_avanzado_2024,aprendizaje,prohibida,Resultado educativo,ninguna,ninguna,no aplica,0,Solo con cobertura completa y después de fijar pares
+matematica_satisfactorio_o_avanzado_2024,aprendizaje,prohibida,Resultado educativo,ninguna,ninguna,no aplica,0,Solo con cobertura completa y después de fijar pares
+banderas_educativas,resultado,prohibida,Resumen de resultados o cobertura que introduciría circularidad,ninguna,ninguna,no aplica,0,Ninguna bandera entra a la matriz
+clasificaciones_historicas,resultado,prohibida,Señales construidas desde trayectoria,ninguna,ninguna,no aplica,0,Ninguna clasificación entra a la matriz
