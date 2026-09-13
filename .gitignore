@@ -40,11 +40,16 @@ data/raw/**
 !data/raw/.gitkeep
 data/processed/**
 !data/processed/.gitkeep
+data/public/**
+!data/public/
 *.parquet
 *.feather
 *.arrow
 *.sqlite
 *.db
+!data/public/manifest.json
+!data/public/*.parquet
+!data/public/*.geojson
 outputs/charts/**
 !outputs/charts/.gitkeep
 outputs/maps/**
@@ -68,4 +73,3 @@ desktop.ini
 .idea/
 *.swp
 *.swo
-

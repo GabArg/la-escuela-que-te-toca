@@ -32,7 +32,7 @@ La información educativa suele encontrarse dispersa entre distintas fuentes, pe
 
 ## Estado actual
 
-El proyecto cuenta con pipelines territoriales y educativos auditados, perfiles integrados, series RA 2011–2025, contexto Censo 2022, Aprender 2024 y un motor de pares estructuralmente comparables. La primera versión funcional del MVP presenta estas capacidades en Streamlit; el diseño visual todavía es preliminar.
+El proyecto cuenta con pipelines auditados, perfiles integrados, series RA 2011–2025, contexto Censo 2022, Aprender 2024, pares comparables y un MVP Streamlit con mapa e identidad visual.
 
 ## Datos y transparencia
 
@@ -40,7 +40,7 @@ La versión pública utiliza **únicamente datos abiertos**, con prioridad para 
 
 ## Estructura general
 
-- `data/`: datos originales, procesados, externos y diccionarios.
+- `data/`: datos originales, procesados, bundle público y diccionarios.
 - `notebooks/`: exploración, cruces territoriales y análisis experimental.
 - `src/`: código reutilizable del flujo de datos y análisis.
 - `app/`: aplicación interactiva.
@@ -56,16 +56,28 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
-## Datos procesados
+## Bundle público
 
-Los parquets no se versionan. Cada módulo de `src/ingestion`, `src/features` y `src/analysis` expone una función o ejecución reproducible. Para reconstruir las capas finales, una vez disponibles sus insumos raw:
+La aplicación usa primero el bundle mínimo versionado en `data/public`. Incluye solo los artefactos finales y el manifiesto necesarios para serving, sin fuentes raw.
+
+Para regenerarlo desde outputs procesados locales:
+
+```bash
+python scripts/build_public_bundle.py
+```
+
+En producción se recomienda definir `APP_ALLOW_PIPELINE_REBUILD=0`. Los hashes, esquemas y tamaños están en `data/public/manifest.json`. Véase `docs/deploy/public_bundle.md`.
+
+## Reconstrucción para desarrollo
+
+Los outputs completos de `data/processed` y los insumos raw siguen ignorados. Para reconstruir las capas finales:
 
 ```bash
 python -m src.features.perfiles_territoriales
 python -m src.analysis.pares_comparables
 ```
 
-La app intenta llamar esos módulos si falta una salida final; no duplica la lógica analítica.
+La app solo intenta llamar esos módulos como respaldo de desarrollo; un deployment normal no reconstruye las fuentes.
 
 ## Ejecutar la app
 
@@ -82,6 +94,6 @@ Los resultados son exploratorios y descriptivos. Las asociaciones no demuestran 
 ## Próximos pasos
 
 - Probar el MVP con usuarios reales.
-- Refinar accesibilidad e identidad visual.
-- Incorporar el mapa localizador sin usarlo como ranking.
-- Versionar outputs y procesos de actualización.
+- Completar auditoría formal de accesibilidad.
+- Probar el deployment público y el enlace anónimo.
+- Definir el ciclo de actualización del bundle.

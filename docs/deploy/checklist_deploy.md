@@ -17,9 +17,9 @@
 
 ## Datos
 
-- [ ] Publicar bundle procesado versionado.
-- [ ] Verificar hashes al construir.
-- [ ] Confirmar que los seis artefactos esenciales y el GeoJSON estén presentes.
+- [x] Preparar bundle procesado versionado.
+- [x] Verificar hashes al cargar.
+- [x] Confirmar los seis artefactos esenciales, incluido el GeoJSON.
 - [ ] Medir tamaño de descarga y memoria en hosting.
 - [ ] Probar un arranque sin caché y otro con caché.
 
@@ -31,4 +31,4 @@
 - [ ] Registrar versión de datos visible.
 - [ ] Revisar logs sin exponer rutas o datos sensibles.
 
-Streamlit Community Cloud es viable si el bundle cabe en sus límites efectivos y puede obtenerse durante build. Si no, conviene un contenedor con almacenamiento de objetos o artefactos incluidos.
+Streamlit Community Cloud es viable con el bundle actual de 2,73 MB versionado directamente. Falta probar el servicio real.
