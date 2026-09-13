@@ -1,0 +1,5 @@
+provincia,nombre_censo,nombre_georef,departamento_id,tipo_equivalencia,estado,evidencia,observaciones
+Buenos Aires,Nueve De Julio,9 de Julio,06588,número escrito,confirmado,"El Censo publica Nueve de Julio y GeoRef 9 de Julio dentro de la misma provincia","Equivalencia literal de numeral; ID verificado contra GeoRef"
+Chaco,1º de Mayo,1° de Mayo,22126,símbolo ordinal,confirmado,"Los cuadros Censo alternan el ordinal º y GeoRef usa °; el resto coincide","Equivalencia tipográfica; ID verificado contra GeoRef"
+Buenos Aires,Coronel De Marina L.Rosales,Coronel de Marina Leonardo Rosales,06182,abreviatura,pendiente,"No se halló tabla oficial que expanda explícitamente L. como Leonardo","No asignar"
+Buenos Aires,Lezana,Lezama,06466,posible errata,pendiente,"Una familia de cuadros Censo publica Lezana; no se confirmó fe de erratas oficial","No asignar"

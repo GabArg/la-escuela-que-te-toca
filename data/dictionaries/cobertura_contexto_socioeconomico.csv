@@ -1,0 +1,530 @@
+provincia_id,provincia_nombre,departamento_id,departamento_nombre,nbi,hacinamiento,internet,computadora,asistencia,vivienda_servicios,observaciones
+02,Ciudad Autónoma de Buenos Aires,02007,Comuna 1,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+02,Ciudad Autónoma de Buenos Aires,02014,Comuna 2,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+02,Ciudad Autónoma de Buenos Aires,02021,Comuna 3,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+02,Ciudad Autónoma de Buenos Aires,02028,Comuna 4,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+02,Ciudad Autónoma de Buenos Aires,02035,Comuna 5,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+02,Ciudad Autónoma de Buenos Aires,02042,Comuna 6,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+02,Ciudad Autónoma de Buenos Aires,02049,Comuna 7,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+02,Ciudad Autónoma de Buenos Aires,02056,Comuna 8,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+02,Ciudad Autónoma de Buenos Aires,02063,Comuna 9,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+02,Ciudad Autónoma de Buenos Aires,02070,Comuna 10,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+02,Ciudad Autónoma de Buenos Aires,02077,Comuna 11,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+02,Ciudad Autónoma de Buenos Aires,02084,Comuna 12,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+02,Ciudad Autónoma de Buenos Aires,02091,Comuna 13,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+02,Ciudad Autónoma de Buenos Aires,02098,Comuna 14,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+02,Ciudad Autónoma de Buenos Aires,02105,Comuna 15,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06007,Adolfo Alsina,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06014,Adolfo Gonzales Chaves,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06021,Alberti,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06028,Almirante Brown,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06035,Avellaneda,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06042,Ayacucho,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06049,Azul,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06056,Bahía Blanca,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06063,Balcarce,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06070,Baradero,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06077,Arrecifes,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06084,Benito Juárez,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06091,Berazategui,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06098,Berisso,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06105,Bolívar,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06112,Bragado,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06119,Brandsen,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06126,Campana,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06134,Cañuelas,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06140,Capitán Sarmiento,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06147,Carlos Casares,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06154,Carlos Tejedor,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06161,Carmen de Areco,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06168,Castelli,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06175,Colón,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06182,Coronel de Marina Leonardo Rosales,no incorporado,no incorporado,False,False,True,False,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06189,Coronel Dorrego,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06196,Coronel Pringles,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06203,Coronel Suárez,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06210,Chacabuco,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06218,Chascomús,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06224,Chivilcoy,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06231,Daireaux,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06238,Dolores,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06245,Ensenada,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06252,Escobar,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06260,Esteban Echeverría,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06266,Exaltación de la Cruz,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06270,Ezeiza,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06274,Florencio Varela,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06277,Florentino Ameghino,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06280,General Alvarado,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06287,General Alvear,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06294,General Arenales,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06301,General Belgrano,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06308,General Guido,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06315,General Juan Madariaga,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06322,General La Madrid,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06329,General Las Heras,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06336,General Lavalle,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06343,General Paz,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06351,General Pinto,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06357,General Pueyrredón,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06364,General Rodríguez,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06371,General San Martín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06385,General Viamonte,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06392,General Villegas,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06399,Guaminí,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06406,Hipólito Yrigoyen,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06408,Hurlingham,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06410,Ituzaingó,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06412,José C. Paz,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06413,Junín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06420,La Costa,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06427,La Matanza,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06434,Lanús,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06441,La Plata,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06448,Laprida,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06455,Las Flores,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06462,Leandro N. Alem,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06466,Lezama,no incorporado,no incorporado,True,True,True,False,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06469,Lincoln,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06476,Lobería,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06483,Lobos,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06490,Lomas de Zamora,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06497,Luján,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06505,Magdalena,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06511,Maipú,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06515,Malvinas Argentinas,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06518,Mar Chiquita,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06525,Marcos Paz,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06532,Mercedes,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06539,Merlo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06547,Monte,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06553,Monte Hermoso,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06560,Moreno,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06568,Morón,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06574,Navarro,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06581,Necochea,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06588,9 de Julio,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06595,Olavarría,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06602,Patagones,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06609,Pehuajó,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06616,Pellegrini,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06623,Pergamino,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06630,Pila,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06638,Pilar,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06644,Pinamar,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06648,Presidente Perón,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06651,Puán,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06655,Punta Indio,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06658,Quilmes,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06665,Ramallo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06672,Rauch,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06679,Rivadavia,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06686,Rojas,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06693,Roque Pérez,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06700,Saavedra,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06707,Saladillo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06714,Salto,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06721,Salliqueló,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06728,San Andrés de Giles,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06735,San Antonio de Areco,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06742,San Cayetano,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06749,San Fernando,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06756,San Isidro,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06760,San Miguel,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06763,San Nicolás,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06770,San Pedro,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06778,San Vicente,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06784,Suipacha,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06791,Tandil,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06798,Tapalqué,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06805,Tigre,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06812,Tordillo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06819,Tornquist,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06826,Trenque Lauquen,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06833,Tres Arroyos,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06840,Tres de Febrero,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06847,Tres Lomas,no incorporado,no incorporado,False,False,True,False,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06854,25 de Mayo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06861,Vicente López,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06868,Villa Gesell,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06875,Villarino,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+06,Buenos Aires,06882,Zárate,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10007,Ambato,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10014,Ancasti,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10021,Andalgalá,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10028,Antofagasta de la Sierra,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10035,Belén,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10042,Capayán,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10049,Capital,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10056,El Alto,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10063,Fray Mamerto Esquiú,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10070,La Paz,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10077,Paclín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10084,Pomán,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10091,Santa María,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10098,Santa Rosa,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10105,Tinogasta,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+10,Catamarca,10112,Valle Viejo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14007,Calamuchita,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14014,Capital,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14021,Colón,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14028,Cruz del Eje,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14035,General Roca,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14042,General San Martín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14049,Ischilín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14056,Juárez Celman,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14063,Marcos Juárez,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14070,Minas,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14077,Pocho,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14084,Presidente Roque Sáenz Peña,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14091,Punilla,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14098,Río Cuarto,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14105,Río Primero,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14112,Río Seco,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14119,Río Segundo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14126,San Alberto,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14133,San Javier,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14140,San Justo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14147,Santa María,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14154,Sobremonte,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14161,Tercero Arriba,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14168,Totoral,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14175,Tulumba,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+14,Córdoba,14182,Unión,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18007,Bella Vista,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18014,Berón de Astrada,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18021,Capital,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18028,Concepción,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18035,Curuzú Cuatiá,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18042,Empedrado,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18049,Esquina,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18056,General Alvear,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18063,General Paz,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18070,Goya,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18077,Itatí,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18084,Ituzaingó,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18091,Lavalle,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18098,Mburucuyá,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18105,Mercedes,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18112,Monte Caseros,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18119,Paso de los Libres,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18126,Saladas,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18133,San Cosme,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18140,San Luis del Palmar,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18147,San Martín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18154,San Miguel,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18161,San Roque,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18168,Santo Tomé,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+18,Corrientes,18175,Sauce,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22007,Almirante Brown,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22014,Bermejo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22021,Comandante Fernández,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22028,Chacabuco,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22036,12 de Octubre,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22039,2 de Abril,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22043,Fray Justo Santa María de Oro,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22049,General Belgrano,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22056,General Donovan,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22063,General Güemes,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22070,Independencia,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22077,Libertad,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22084,Libertador General San Martín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22091,Maipú,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22098,Mayor Luis J. Fontana,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22105,9 de Julio,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22112,O'Higgins,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22119,Presidencia de la Plaza,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22126,1° de Mayo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22133,Quitilipi,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22140,San Fernando,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22147,San Lorenzo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22154,Sargento Cabral,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22161,Tapenagá,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+22,Chaco,22168,25 de Mayo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26007,Biedma,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26014,Cushamen,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26021,Escalante,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26028,Florentino Ameghino,no incorporado,no incorporado,True,True,True,False,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26035,Futaleufú,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26042,Gaiman,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26049,Gastre,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26056,Languiñeo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26063,Mártires,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26070,Paso de Indios,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26077,Rawson,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26084,Río Senguer,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26091,Sarmiento,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26098,Tehuelches,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+26,Chubut,26105,Telsen,no incorporado,no incorporado,True,True,True,False,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30008,Colón,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30015,Concordia,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30021,Diamante,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30028,Federación,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30035,Federal,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30042,Feliciano,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30049,Gualeguay,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30056,Gualeguaychú,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30063,Islas del Ibicuy,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30070,La Paz,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30077,Nogoyá,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30084,Paraná,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30088,San Salvador,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30091,Tala,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30098,Uruguay,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30105,Victoria,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+30,Entre Ríos,30113,Villaguay,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+34,Formosa,34007,Bermejo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+34,Formosa,34014,Formosa,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+34,Formosa,34021,Laishi,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+34,Formosa,34028,Matacos,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+34,Formosa,34035,Patiño,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+34,Formosa,34042,Pilagás,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+34,Formosa,34049,Pilcomayo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+34,Formosa,34056,Pirané,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+34,Formosa,34063,Ramón Lista,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38007,Cochinoca,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38014,El Carmen,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38021,Dr. Manuel Belgrano,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38028,Humahuaca,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38035,Ledesma,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38042,Palpalá,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38049,Rinconada,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38056,San Antonio,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38063,San Pedro,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38070,Santa Bárbara,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38077,Santa Catalina,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38084,Susques,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38094,Tilcara,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38098,Tumbaya,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38105,Valle Grande,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+38,Jujuy,38112,Yavi,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42007,Atreucó,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42014,Caleu Caleu,no incorporado,no incorporado,True,True,True,False,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42021,Capital,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42028,Catriló,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42035,Conhelo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42042,Curacó,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42049,Chalileo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42056,Chapaleufú,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42063,Chical Co,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42070,Guatraché,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42077,Hucal,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42084,Lihuel Calel,no incorporado,no incorporado,True,True,True,False,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42091,Limay Mahuida,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42098,Loventué,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42105,Maracó,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42112,Puelén,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42119,Quemú Quemú,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42126,Rancul,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42133,Realicó,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42140,Toay,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42147,Trenel,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+42,La Pampa,42154,Utracán,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46007,Arauco,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46014,Capital,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46021,Castro Barros,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46028,General Felipe Varela,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46035,Chamical,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46042,Chilecito,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46049,Famatina,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46056,Ángel Vicente Peñaloza,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46063,General Belgrano,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46070,General Juan Facundo Quiroga,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46077,General Lamadrid,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46084,General Ortiz de Ocampo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46091,General San Martín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46098,Vinchina,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46105,Independencia,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46112,Rosario Vera Peñaloza,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46119,San Blas de Los Sauces,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+46,La Rioja,46126,Sanagasta,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50007,Capital,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50014,General Alvear,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50021,Godoy Cruz,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50028,Guaymallén,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50035,Junín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50042,La Paz,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50049,Las Heras,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50056,Lavalle,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50063,Luján de Cuyo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50070,Maipú,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50077,Malargüe,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50084,Rivadavia,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50091,San Carlos,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50098,San Martín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50105,San Rafael,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50112,Santa Rosa,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50119,Tunuyán,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+50,Mendoza,50126,Tupungato,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54007,Apóstoles,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54014,Cainguás,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54021,Candelaria,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54028,Capital,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54035,Concepción,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54042,Eldorado,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54049,General Manuel Belgrano,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54056,Guaraní,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54063,Iguazú,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54070,Leandro N. Alem,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54077,Libertador General San Martín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54084,Montecarlo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54091,Oberá,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54098,San Ignacio,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54105,San Javier,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54112,San Pedro,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+54,Misiones,54119,25 de Mayo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58007,Aluminé,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58014,Añelo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58021,Catán Lil,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58028,Collón Curá,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58035,Confluencia,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58042,Chos Malal,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58049,Huiliches,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58056,Lácar,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58063,Loncopué,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58070,Los Lagos,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58077,Minas,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58084,Ñorquín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58091,Pehuenches,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58098,Picún Leufú,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58105,Picunches,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+58,Neuquén,58112,Zapala,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+62,Río Negro,62007,Adolfo Alsina,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+62,Río Negro,62014,Avellaneda,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+62,Río Negro,62021,Bariloche,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+62,Río Negro,62028,Conesa,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+62,Río Negro,62035,El Cuy,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+62,Río Negro,62042,General Roca,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+62,Río Negro,62049,9 de Julio,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+62,Río Negro,62056,Ñorquinco,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+62,Río Negro,62063,Pichi Mahuida,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+62,Río Negro,62070,Pilcaniyeu,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+62,Río Negro,62077,San Antonio,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+62,Río Negro,62084,Valcheta,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+62,Río Negro,62091,25 de Mayo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66007,Anta,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66014,Cachi,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66021,Cafayate,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66028,Capital,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66035,Cerrillos,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66042,Chicoana,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66049,General Güemes,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66056,General José de San Martín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66063,Guachipas,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66070,Iruya,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66077,La Caldera,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66084,La Candelaria,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66091,La Poma,no incorporado,no incorporado,True,True,True,False,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66098,La Viña,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66105,Los Andes,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66112,Metán,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66119,Molinos,no incorporado,no incorporado,True,True,True,False,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66126,Orán,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66133,Rivadavia,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66140,Rosario de la Frontera,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66147,Rosario de Lerma,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66154,San Carlos,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+66,Salta,66161,Santa Victoria,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70007,Albardón,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70014,Angaco,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70021,Calingasta,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70028,Capital,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70035,Caucete,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70042,Chimbas,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70049,Iglesia,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70056,Jáchal,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70063,9 de Julio,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70070,Pocito,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70077,Rawson,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70084,Rivadavia,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70091,San Martín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70098,Santa Lucía,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70105,Sarmiento,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70112,Ullum,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70119,Valle Fértil,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70126,25 de Mayo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+70,San Juan,70133,Zonda,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+74,San Luis,74007,Ayacucho,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+74,San Luis,74014,Belgrano,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+74,San Luis,74021,Coronel Pringles,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+74,San Luis,74028,Chacabuco,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+74,San Luis,74035,General Pedernera,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+74,San Luis,74042,Gobernador Dupuy,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+74,San Luis,74049,Junín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+74,San Luis,74056,Juan Martín de Pueyrredón,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+74,San Luis,74063,Libertador General San Martín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+78,Santa Cruz,78007,Corpen Aike,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+78,Santa Cruz,78014,Deseado,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+78,Santa Cruz,78021,Güer Aike,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+78,Santa Cruz,78028,Lago Argentino,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+78,Santa Cruz,78035,Lago Buenos Aires,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+78,Santa Cruz,78042,Magallanes,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+78,Santa Cruz,78049,Río Chico,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82007,Belgrano,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82014,Caseros,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82021,Castellanos,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82028,Constitución,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82035,Garay,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82042,General López,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82049,General Obligado,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82056,Iriondo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82063,La Capital,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82070,Las Colonias,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82077,9 de Julio,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82084,Rosario,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82091,San Cristóbal,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82098,San Javier,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82105,San Jerónimo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82112,San Justo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82119,San Lorenzo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82126,San Martín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+82,Santa Fe,82133,Vera,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86007,Aguirre,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86014,Alberdi,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86021,Atamisqui,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86028,Avellaneda,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86035,Banda,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86042,Belgrano,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86049,Capital,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86056,Copo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86063,Choya,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86070,Figueroa,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86077,General Taboada,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86084,Guasayán,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86091,Jiménez,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86098,Juan Felipe Ibarra,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86105,Loreto,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86112,Mitre,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86119,Moreno,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86126,Ojo de Agua,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86133,Pellegrini,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86140,Quebrachos,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86147,Río Hondo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86154,Rivadavia,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86161,Robles,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86168,Salavina,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86175,San Martín,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86182,Sarmiento,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+86,Santiago del Estero,86189,Silípica,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90007,Burruyacú,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90014,Cruz Alta,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90021,Chicligasta,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90028,Famaillá,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90035,Graneros,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90042,Juan Bautista Alberdi,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90049,La Cocha,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90056,Leales,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90063,Lules,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90070,Monteros,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90077,Río Chico,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90084,Capital,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90091,Simoca,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90098,Tafí del Valle,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90105,Tafí Viejo,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90112,Trancas,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+90,Tucumán,90119,Yerba Buena,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+94,"Tierra del Fuego, Antártida e Islas del Atlántico Sur",94008,Río Grande,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+94,"Tierra del Fuego, Antártida e Islas del Atlántico Sur",94011,Tolhuin,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+94,"Tierra del Fuego, Antártida e Islas del Atlántico Sur",94015,Ushuaia,no incorporado,no incorporado,True,True,True,True,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+94,"Tierra del Fuego, Antártida e Islas del Atlántico Sur",94021,Islas del Atlántico Sur,no incorporado,no incorporado,False,False,False,False,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
+94,"Tierra del Fuego, Antártida e Islas del Atlántico Sur",94028,Antártida Argentina,no incorporado,no incorporado,False,False,False,False,Nulos preservados; NBI y hacinamiento excluidos por no contar con extracción estática departamental validada.
