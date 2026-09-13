@@ -31,13 +31,18 @@ def render_home(profiles) -> None:
     st.markdown('<div class="eyebrow">Datos abiertos · Argentina</div>', unsafe_allow_html=True)
     st.title("La escuela que te toca")
     st.markdown('<p class="lede">Una mirada territorial a las desigualdades educativas de la Argentina.</p>', unsafe_allow_html=True)
+    st.markdown('<p class="home-tagline">Comparar mejor, para preguntar mejor.</p>', unsafe_allow_html=True)
     st.write("Elegí un territorio para explorar su trayectoria, contexto y aprendizaje, y compararlo con lugares de condiciones similares.")
     st.markdown('<div class="journey">Detectar → Entender → Contextualizar → Comparar → Investigar</div>', unsafe_allow_html=True)
     territory_id = st.session_state.territory_id
     row = profile_row(profiles, territory_id)
-    st.markdown(f"### Territorio seleccionado: {row.departamento_nombre}")
-    st.caption(f"{row.provincia_nombre} · Cobertura documental: {row.calidad_total_del_perfil}. No mide calidad educativa.")
+    st.markdown(
+        f'<div class="home-territory"><h3>{row.departamento_nombre}</h3>'
+        f'<p class="territory-sub">{row.provincia_nombre} · Cobertura documental: {row.calidad_total_del_perfil}. No mide calidad educativa.</p></div>',
+        unsafe_allow_html=True,
+    )
     st.button("Explorar territorio", type="primary", on_click=_navigate, args=("Perfil territorial",))
+    st.markdown('<div class="section-rule"></div>', unsafe_allow_html=True)
     render_map(profiles, territory_id)
     method_note("Las capas combinan Censo y Padrón 2022, Aprender 2024 y Relevamiento Anual 2025: no constituyen una única fotografía temporal. No se construyen scores ni rankings.")
 

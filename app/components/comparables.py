@@ -67,10 +67,25 @@ def comparison_chart(row: pd.Series, peer: pd.Series) -> go.Figure | None:
         return None
     fig = go.Figure()
     for label, left, right in rows:
-        fig.add_trace(go.Scatter(x=[left, right], y=[label, label], mode="lines", line={"color": "#d8d2c7", "width": 3}, hoverinfo="skip", showlegend=False))
-    fig.add_trace(go.Scatter(x=[x[1] for x in rows], y=[x[0] for x in rows], mode="markers", name=str(row.departamento_nombre), marker={"color": "#315c4b", "size": 11}))
-    fig.add_trace(go.Scatter(x=[x[2] for x in rows], y=[x[0] for x in rows], mode="markers", name=str(peer.departamento_nombre), marker={"color": "#b66a50", "size": 11, "symbol": "diamond"}))
-    fig.update_layout(height=340, margin=dict(l=10, r=10, t=20, b=30), xaxis_title="Porcentaje", legend_orientation="h")
+        fig.add_trace(go.Scatter(x=[left, right], y=[label, label], mode="lines", line={"color": "#d8d2c7", "width": 2}, hoverinfo="skip", showlegend=False))
+    fig.add_trace(go.Scatter(
+        x=[x[1] for x in rows], y=[x[0] for x in rows], mode="markers+text",
+        name=str(row.departamento_nombre),
+        text=[f"{x[1]:.1f}".replace(".", ",") for x in rows], textposition="top center", textfont={"size": 10, "color": "#315c4b"},
+        marker={"color": "#315c4b", "size": 12},
+    ))
+    fig.add_trace(go.Scatter(
+        x=[x[2] for x in rows], y=[x[0] for x in rows], mode="markers+text",
+        name=str(peer.departamento_nombre),
+        text=[f"{x[2]:.1f}".replace(".", ",") for x in rows], textposition="bottom center", textfont={"size": 10, "color": "#b66a50"},
+        marker={"color": "#b66a50", "size": 12, "symbol": "diamond"},
+    ))
+    fig.update_layout(
+        height=max(300, len(rows) * 75 + 80), margin=dict(l=20, r=20, t=30, b=50),
+        xaxis_title="Porcentaje", legend=dict(orientation="h", y=-0.18, x=0.5, xanchor="center"),
+        plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
+        xaxis=dict(gridcolor="#ede9e0", gridwidth=1), yaxis=dict(gridcolor="rgba(0,0,0,0)"),
+    )
     return fig
 
 

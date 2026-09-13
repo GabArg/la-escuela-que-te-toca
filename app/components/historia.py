@@ -1,6 +1,7 @@
 """Vista histórica basada en transformaciones ya auditadas."""
 from __future__ import annotations
 
+from html import escape
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
@@ -43,16 +44,20 @@ def render_history(profiles: pd.DataFrame, history: pd.DataFrame, territory_id: 
     metric_grid([
         ("Valor 2025", format_value(summary["valor_2025"], "percent_ratio"), "Relevamiento Anual"),
         ("Mediana histórica", format_value(summary["mediana_historica"], "percent_ratio"), f'{summary["n_anios"]} años observados'),
-        ("Patrón histórico", str(classification), "Clasificación descriptiva auditada"),
     ])
+    st.markdown(f'<div class="metric-item" style="max-width:360px"><div class="metric-label">Patrón histórico</div>'
+                f'<div class="metric-value-text">{escape(classification)}</div>'
+                f'<div class="metric-meta">Clasificación descriptiva auditada</div></div>', unsafe_allow_html=True)
     if series.empty or series.valor.notna().sum() == 0:
         st.info("No hay serie histórica identificable para este territorio e indicador.")
         return
     figure = go.Figure(go.Scatter(x=series.anio, y=series.valor * 100, mode="lines+markers", connectgaps=False, line_color="#315c4b"))
     if pd.notna(summary["mediana_historica"]):
         figure.add_hline(y=float(summary["mediana_historica"]) * 100, line_dash="dot", line_color="#66516f", annotation_text="Mediana histórica")
-    figure.add_vrect(x0=2020, x1=2022, fillcolor="#C79A45", opacity=.16, line_width=0,
-                     annotation_text="Interpretar con cautela", annotation_position="top left")
-    figure.update_layout(height=430, xaxis_title="Año", yaxis_title="Porcentaje", margin=dict(l=20, r=20, t=35, b=20))
+    figure.add_vrect(x0=2020, x1=2022, fillcolor="#C79A45", opacity=.22, line_width=0,
+                     annotation_text="Interpretar con cautela", annotation_position="top right")
+    figure.update_layout(height=430, xaxis_title="Año", yaxis_title="Porcentaje", margin=dict(l=20, r=20, t=35, b=20),
+                         plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
+                         xaxis=dict(gridcolor="#ede9e0"), yaxis=dict(gridcolor="#ede9e0"))
     st.plotly_chart(figure, width="stretch")
     method_note("Serie descriptiva RA 2011–2025. El período 2020–2022 requiere cautela metodológica; el gráfico no atribuye causas.")

@@ -63,11 +63,15 @@ def metric_grid(items: Iterable[tuple[str, str, str]]) -> None:
 
 
 def signal_card(dimension: object, signal: object, evidence: object, confidence: object) -> None:
+    dim_slug = str(dimension).lower().replace(" ", "-")
+    conf_slug = str(confidence).lower()
+    conf_class = "confidence-media" if conf_slug == "media" else ""
     st.markdown(
-        '<div class="signal-card">'
+        f'<div class="signal-card signal-dim-{escape(dim_slug)} {conf_class}">'
         f'<div class="signal-dimension">{escape(str(dimension))}</div><div>'
-        f'<div class="signal-title">{escape(str(signal))}</div>'
-        f'<div class="signal-meta">{escape(readable_evidence(evidence))} · Confianza {escape(str(confidence).lower())}</div>'
+        f'<div class="signal-title">{escape(str(signal))}'
+        f'<span class="confidence-chip">{escape(conf_slug)}</span></div>'
+        f'<div class="signal-meta">{escape(readable_evidence(evidence))}</div>'
         '</div></div>', unsafe_allow_html=True,
     )
 

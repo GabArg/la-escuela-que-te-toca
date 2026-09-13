@@ -101,5 +101,13 @@ def render_map(profiles: pd.DataFrame, selected_id: str) -> None:
     if clicked and clicked != selected_id and clicked in set(profiles.departamento_id.astype(str)):
         st.session_state.pending_territory_id = clicked
         st.rerun()
-    st.markdown('<div class="map-legend"><span><i class="legend-swatch" style="background:#dce8e1"></i>Dato disponible</span><span><i class="legend-swatch" style="background:#c79a45"></i>Cobertura parcial</span><span><i class="legend-swatch" style="background:#eeeae2"></i>Sin dato</span></div>', unsafe_allow_html=True)
-    st.caption("Seleccioná una unidad en el mapa para sincronizar el territorio. La ausencia de dato nunca representa cero.")
+    st.markdown(
+        '<div class="map-footer">'
+        '<div class="map-legend">'
+        '<span><i class="legend-swatch" style="background:#dce8e1"></i>Dato disponible</span>'
+        '<span><i class="legend-swatch" style="background:#c79a45"></i>Cobertura parcial</span>'
+        '<span><i class="legend-swatch" style="background:#eeeae2"></i>Sin dato</span>'
+        '</div>'
+        'Seleccioná una unidad en el mapa para sincronizar el territorio. La ausencia de dato nunca representa cero.'
+        '</div>', unsafe_allow_html=True,
+    )
