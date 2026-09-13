@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from app.components.perfil import format_value, profile_row
+from app.components.ui import metric_grid, method_note
 
 HISTORY_OPTIONS = {
     "Sobreedad": ("proporcion_sobreedad", "sobreedad_2025"),
@@ -38,17 +39,20 @@ def render_history(profiles: pd.DataFrame, history: pd.DataFrame, territory_id: 
     indicator = st.selectbox("Indicador", list(HISTORY_OPTIONS), key="history_indicator")
     series = history_series(history, territory_id, indicator)
     summary = history_summary(row, indicator)
-    cols = st.columns(3)
-    cols[0].metric("Valor 2025", format_value(summary["valor_2025"], "percent_ratio"))
-    cols[1].metric("Mediana histórica", format_value(summary["mediana_historica"], "percent_ratio"))
     classification = summary["clasificacion"] if pd.notna(summary["clasificacion"]) else "Sin clasificación"
-    cols[2].metric("Patrón histórico", classification)
+    metric_grid([
+        ("Valor 2025", format_value(summary["valor_2025"], "percent_ratio"), "Relevamiento Anual"),
+        ("Mediana histórica", format_value(summary["mediana_historica"], "percent_ratio"), f'{summary["n_anios"]} años observados'),
+        ("Patrón histórico", str(classification), "Clasificación descriptiva auditada"),
+    ])
     if series.empty or series.valor.notna().sum() == 0:
         st.info("No hay serie histórica identificable para este territorio e indicador.")
         return
-    figure = go.Figure(go.Scatter(x=series.anio, y=series.valor * 100, mode="lines+markers", connectgaps=False, line_color="#3E5C76"))
-    figure.add_vrect(x0=2020, x1=2022, fillcolor="#D8C3A5", opacity=.25, line_width=0,
+    figure = go.Figure(go.Scatter(x=series.anio, y=series.valor * 100, mode="lines+markers", connectgaps=False, line_color="#315c4b"))
+    if pd.notna(summary["mediana_historica"]):
+        figure.add_hline(y=float(summary["mediana_historica"]) * 100, line_dash="dot", line_color="#66516f", annotation_text="Mediana histórica")
+    figure.add_vrect(x0=2020, x1=2022, fillcolor="#C79A45", opacity=.16, line_width=0,
                      annotation_text="Interpretar con cautela", annotation_position="top left")
     figure.update_layout(height=430, xaxis_title="Año", yaxis_title="Porcentaje", margin=dict(l=20, r=20, t=35, b=20))
     st.plotly_chart(figure, width="stretch")
-    st.caption("Serie descriptiva RA 2011–2025. La ruptura 2020–2022 puede reflejar condiciones administrativas o metodológicas; no se atribuyen causas.")
+    method_note("Serie descriptiva RA 2011–2025. El período 2020–2022 requiere cautela metodológica; el gráfico no atribuye causas.")

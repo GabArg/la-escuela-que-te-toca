@@ -1,5 +1,7 @@
 # Implementación del MVP Streamlit
 
+> Refinamiento visual 2026-09-13: sistema visual centralizado, mapa GeoRef sincronizado y componentes editoriales. Véanse identidad_visual.md, mapa_interactivo.md y refinamiento_ux.md.
+
 ## Arquitectura
 
 `app/app.py` configura navegación y estado. Los componentes contienen presentación y funciones puras testeables:

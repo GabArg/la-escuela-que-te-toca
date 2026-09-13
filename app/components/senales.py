@@ -4,6 +4,8 @@ from __future__ import annotations
 import pandas as pd
 import streamlit as st
 
+from app.components.ui import signal_card
+
 
 def _open_profile(territory_id: str, province: str) -> None:
     st.session_state.territory_id = territory_id
@@ -28,13 +30,15 @@ def render_signals(signals: pd.DataFrame) -> None:
     dimension = cols[1].selectbox("Dimensión", ["Todas", *sorted(signals.dimension.unique())], key="signals_dimension")
     signal_type = cols[2].selectbox("Tipo de señal", ["Todas", *sorted(signals.senal.unique())], key="signals_type")
     filtered = filter_signals(signals, province, dimension, signal_type)
-    display = filtered[["provincia_nombre", "departamento_nombre", "dimension", "senal", "evidencia", "nivel_confianza"]].rename(columns={
-        "provincia_nombre": "Provincia", "departamento_nombre": "Territorio", "dimension": "Dimensión",
-        "senal": "Señal", "evidencia": "Evidencia", "nivel_confianza": "Confianza",
-    })
-    st.dataframe(display, hide_index=True, width="stretch")
     if filtered.empty:
+        st.info("No hay señales para esta combinación de filtros.")
         return
+    st.caption(f"{len(filtered)} señales visibles, en orden alfabético territorial; no es un orden de gravedad.")
+    for _, row in filtered.head(40).iterrows():
+        st.markdown(f"**{row.departamento_nombre}, {row.provincia_nombre}**")
+        signal_card(row.dimension, row.senal, row.evidencia, row.nivel_confianza)
+    if len(filtered) > 40:
+        st.caption("Se muestran las primeras 40 coincidencias para mantener una lectura clara. Ajustá los filtros para acotar.")
     options = filtered.drop_duplicates("departamento_id").set_index("departamento_id").apply(lambda r: f"{r.departamento_nombre} · {r.provincia_nombre}", axis=1).to_dict()
     selected = st.selectbox("Abrir un perfil", list(options), format_func=lambda value: options[value])
     selected_row = filtered.loc[filtered.departamento_id.eq(selected)].iloc[0]

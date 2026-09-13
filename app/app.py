@@ -1,4 +1,4 @@
-"""Orquestador del MVP Streamlit de La escuela que te toca."""
+"""Orquestador de la experiencia Streamlit de La escuela que te toca."""
 from __future__ import annotations
 
 import sys
@@ -11,19 +11,14 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from app.components.comparables import render_comparables
-from app.components.data import (
-    DataAvailabilityError,
-    load_gaps,
-    load_history,
-    load_pairs,
-    load_profiles,
-    load_signals,
-)
+from app.components.data import DataAvailabilityError, load_gaps, load_history, load_pairs, load_profiles, load_signals
 from app.components.historia import render_history
+from app.components.mapa import render_map
 from app.components.metodologia import render_methodology
 from app.components.perfil import profile_row, render_profile
 from app.components.senales import render_signals
-from app.components.territorio import render_selector
+from app.components.territorio import apply_pending_territory, render_selector
+from app.components.ui import load_styles, method_note
 
 SECTIONS = ["Inicio", "Perfil territorial", "Historia", "Comparables", "Dónde mirar", "Metodología"]
 
@@ -32,44 +27,24 @@ def _navigate(section: str) -> None:
     st.session_state.nav_section = section
 
 
-def _style() -> None:
-    st.markdown(
-        """
-        <style>
-        .block-container {max-width: 1180px; padding-top: 2rem; padding-bottom: 4rem;}
-        h1, h2, h3 {letter-spacing: -0.02em;}
-        [data-testid="stMetric"] {background: #f5f3ef; padding: .8rem; border-radius: .35rem;}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
-
 def render_home(profiles) -> None:
+    st.markdown('<div class="eyebrow">Datos abiertos · Argentina</div>', unsafe_allow_html=True)
     st.title("La escuela que te toca")
-    st.subheader("Una mirada territorial a las desigualdades educativas de la Argentina.")
-    st.write(
-        "La app integra datos públicos de educación, territorio y contexto para ayudar a detectar diferencias, "
-        "compararlas con territorios semejantes y formular preguntas de investigación."
-    )
-    st.markdown("**Detectar → Entender → Contextualizar → Comparar → Investigar**")
-    st.divider()
+    st.markdown('<p class="lede">Una mirada territorial a las desigualdades educativas de la Argentina.</p>', unsafe_allow_html=True)
+    st.write("Elegí un territorio para explorar su trayectoria, contexto y aprendizaje, y compararlo con lugares de condiciones similares.")
+    st.markdown('<div class="journey">Detectar → Entender → Contextualizar → Comparar → Investigar</div>', unsafe_allow_html=True)
     territory_id = st.session_state.territory_id
     row = profile_row(profiles, territory_id)
-    cols = st.columns([2, 1])
-    with cols[0]:
-        st.markdown(f"### {row.departamento_nombre}")
-        st.write(row.provincia_nombre)
-        st.caption(f"Cobertura documental: {row.calidad_total_del_perfil}. No mide calidad educativa.")
-    with cols[1]:
-        st.button("Explorar territorio", type="primary", width="stretch", on_click=_navigate, args=("Perfil territorial",))
-    st.info("Este MVP no ofrece un score ni un ranking. Cada dimensión conserva su fuente, año y limitación.")
-    st.caption("El mapa territorial interactivo queda preparado para una iteración posterior; en este MVP se prioriza una selección accesible y estable.")
+    st.markdown(f"### Territorio seleccionado: {row.departamento_nombre}")
+    st.caption(f"{row.provincia_nombre} · Cobertura documental: {row.calidad_total_del_perfil}. No mide calidad educativa.")
+    st.button("Explorar territorio", type="primary", on_click=_navigate, args=("Perfil territorial",))
+    render_map(profiles, territory_id)
+    method_note("No se construyen scores ni rankings. Cada dimensión conserva su fuente, año, cobertura y limitaciones.")
 
 
 def main() -> None:
-    st.set_page_config(page_title="La escuela que te toca", layout="wide")
-    _style()
+    st.set_page_config(page_title="La escuela que te toca", page_icon="▰", layout="wide")
+    load_styles()
     try:
         profiles = load_profiles()
         signals = load_signals()
@@ -80,8 +55,9 @@ def main() -> None:
         st.session_state.territory_id = profiles.sort_values(["provincia_nombre", "departamento_nombre"]).iloc[0].departamento_id
     if "nav_section" not in st.session_state:
         st.session_state.nav_section = "Inicio"
+    apply_pending_territory(profiles)
 
-    st.sidebar.title("La escuela que te toca")
+    st.sidebar.markdown('<div class="eyebrow">La escuela que te toca</div>', unsafe_allow_html=True)
     render_selector(profiles)
     section = st.sidebar.radio("Recorrido", SECTIONS, key="nav_section")
     st.sidebar.caption("Datos abiertos oficiales · Lectura exploratoria, no causal")
@@ -97,12 +73,10 @@ def main() -> None:
             render_comparables(profiles, load_pairs(), load_gaps(), st.session_state.territory_id)
         elif section == "Dónde mirar":
             render_signals(signals)
-        else:
+        elif section == "Metodología":
             render_methodology()
     except DataAvailabilityError as exc:
         st.error(str(exc))
-    except (KeyError, ValueError) as exc:
-        st.error("No pudimos presentar esta vista con los datos disponibles. Probá otro territorio o revisá los pipelines procesados.")
 
 
 if __name__ == "__main__":

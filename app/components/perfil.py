@@ -7,6 +7,8 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
+from app.components.ui import coverage_text, metric_grid, profile_sentence, signal_card
+
 
 def is_missing(value: Any) -> bool:
     try:
@@ -77,39 +79,32 @@ def _metric(row: pd.Series, label: str, variable: str, kind: str, year: int, sou
 
 def render_profile(profiles: pd.DataFrame, signals: pd.DataFrame, territory_id: str) -> None:
     row = profile_row(profiles, territory_id)
-    st.title(row.departamento_nombre)
-    st.caption(f"{row.provincia_nombre} · Departamento o unidad territorial equivalente")
-    st.info(f"Cobertura del perfil: **{row.calidad_total_del_perfil}**. Mide disponibilidad documental, no calidad educativa.")
+    selected = signal_rows(signals, territory_id)
+    st.markdown(
+        f'<div class="territory-header"><div class="eyebrow">{row.provincia_nombre}</div>'
+        f'<h1>{row.departamento_nombre}</h1><p>Departamento o unidad territorial equivalente</p></div>',
+        unsafe_allow_html=True,
+    )
+    st.markdown(f'<span class="coverage-chip">{coverage_text(row.calidad_total_del_perfil)}</span>', unsafe_allow_html=True)
+    st.markdown(f'<p class="lede">{profile_sentence(selected)}</p>', unsafe_allow_html=True)
     st.caption("Fuentes principales: Censo y Padrón 2022 · Aprender 2024 · Relevamiento Anual 2025")
 
     st.subheader("Qué merece mirar")
-    selected = signal_rows(signals, territory_id)
     if selected.empty:
         st.write("No hay señales prioritarias activadas con los datos disponibles.")
     else:
-        columns = st.columns(len(selected))
-        for column, (_, signal) in zip(columns, selected.iterrows()):
-            with column:
-                st.markdown(f"**{signal.dimension}**")
-                st.write(signal.senal)
-                st.caption(f"Evidencia: {signal.evidencia}")
-                st.caption(f"Confianza metodológica: {signal.nivel_confianza}")
+        for _, signal in selected.iterrows():
+            signal_card(signal.dimension, signal.senal, signal.evidencia, signal.nivel_confianza)
 
     st.subheader("Acceso y asistencia")
-    cols = st.columns(4)
-    for container, age in zip(cols, ["4_5", "6_11", "12_14", "15_17"]):
-        with container:
-            _metric(row, f"Asistencia {age.replace('_', '–')}", f"porcentaje_asistencia_{age}_2022", "percent", 2022, "Censo")
+    metric_grid([(f"Asistencia {age.replace('_', '–')}", format_value(row.get(f"porcentaje_asistencia_{age}_2022"), "percent"), "2022 · Censo") for age in ["4_5", "6_11", "12_14", "15_17"]])
     with st.expander("Comparar asistencia 15–17 con medianas"):
         variable = "porcentaje_asistencia_15_17_2022"
         figure = reference_plot("Asistencia 15–17", row.get(variable), row.get(f"{variable}__mediana_provincial"), row.get(f"{variable}__mediana_nacional"), "Porcentaje")
         if figure is not None: st.plotly_chart(figure, width="stretch")
 
     st.subheader("Trayectoria")
-    cols = st.columns(3)
-    for container, label, variable in zip(cols, ["Sobreedad", "Repetición", "Salidos sin pase"], ["sobreedad_2025", "repeticion_2025", "salidos_sin_pase_2025"]):
-        with container:
-            _metric(row, label, variable, "percent_ratio", 2025, "RA")
+    metric_grid([(label, format_value(row.get(variable), "percent_ratio"), "2025 · Relevamiento Anual") for label, variable in zip(["Sobreedad", "Repetición", "Salidos sin pase"], ["sobreedad_2025", "repeticion_2025", "salidos_sin_pase_2025"])])
     with st.expander("Comparar sobreedad con medianas"):
         variable = "sobreedad_2025"
         values = [row.get(variable), row.get(f"{variable}__mediana_provincial"), row.get(f"{variable}__mediana_nacional")]
@@ -118,29 +113,21 @@ def render_profile(profiles: pd.DataFrame, signals: pd.DataFrame, territory_id: 
         if figure is not None: st.plotly_chart(figure, width="stretch")
 
     st.subheader("Oferta")
-    cols = st.columns(4)
     definitions = [
         ("Localizaciones", "localizaciones_total_2022", "integer"),
         ("CUE con secundaria", "establecimientos_cue_secundaria_2022", "integer"),
         ("Localizaciones por 1.000", "localizaciones_por_1000_poblacion_escolar_2022", "number"),
         ("CUE rurales", "proporcion_cue_rurales_2022", "percent_ratio"),
     ]
-    for container, (label, variable, kind) in zip(cols, definitions):
-        with container:
-            _metric(row, label, variable, kind, 2022, "Padrón oficial")
+    metric_grid([(label, format_value(row.get(variable), kind), "2022 · Padrón oficial") for label, variable, kind in definitions])
 
     st.subheader("Contexto")
     st.caption("Estas variables ayudan a contextualizar el territorio. No implican causalidad sobre los resultados educativos.")
-    cols = st.columns(4)
     context = [("Densidad", "densidad_poblacional", "number", "hab./km²"),
                ("Internet", "porcentaje_hogares_internet_2022", "percent", ""),
                ("Computadora", "porcentaje_hogares_computadora_2022", "percent", ""),
                ("Rancho/casilla", "porcentaje_viviendas_rancho_casilla_2022", "percent", "")]
-    for container, (label, variable, kind, unit) in zip(cols, context):
-        with container:
-            _metric(row, label, variable, kind, 2022, "Censo")
-            if unit:
-                st.caption(unit)
+    metric_grid([(label, format_value(row.get(variable), kind) + (f" {unit}" if unit else ""), "2022 · Censo") for label, variable, kind, unit in context])
     with st.expander("Ver agua y saneamiento"):
         cols = st.columns(2)
         with cols[0]: _metric(row, "Agua de red", "porcentaje_hogares_agua_red_publica_2022", "percent", 2022, "Censo")
@@ -158,7 +145,7 @@ def render_profile(profiles: pd.DataFrame, signals: pd.DataFrame, territory_id: 
             else:
                 st.info("Sin información identificable.")
             continue
-        figure = go.Figure(go.Bar(x=list(distribution.values()), y=list(distribution), orientation="h", marker_color="#557A95"))
+        figure = go.Figure(go.Bar(x=list(distribution.values()), y=list(distribution), orientation="h", marker_color=["#9b8f83", "#c79a45", "#668b78", "#315c4b"]))
         figure.update_layout(height=240, margin=dict(l=10, r=10, t=10, b=20), xaxis_title="Porcentaje", showlegend=False)
         st.plotly_chart(figure, width="stretch")
         combined = distribution["Satisfactorio"] + distribution["Avanzado"]

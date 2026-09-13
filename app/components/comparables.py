@@ -2,9 +2,11 @@
 from __future__ import annotations
 
 import pandas as pd
+import plotly.graph_objects as go
 import streamlit as st
 
 from app.components.perfil import format_value, profile_row
+from app.components.ui import metric_grid, method_note
 
 RESULT_LABELS = {
     "brecha_asistencia_15_17_pp": "Asistencia 15–17",
@@ -51,11 +53,32 @@ def _readable(variable: str) -> str:
     return labels.get(variable, variable.replace("_", " "))
 
 
+def comparison_chart(row: pd.Series, peer: pd.Series) -> go.Figure | None:
+    specs = [
+        ("Asistencia 15–17", "porcentaje_asistencia_15_17_2022", 1),
+        ("Sobreedad", "sobreedad_2025", 100),
+        ("Repetición", "repeticion_2025", 100),
+        ("Salidos sin pase", "salidos_sin_pase_2025", 100),
+        ("Lengua", "lengua_satisfactorio_o_avanzado_2024", 1),
+    ]
+    rows = [(label, float(row.get(var)) * factor, float(peer.get(var)) * factor)
+            for label, var, factor in specs if pd.notna(row.get(var)) and pd.notna(peer.get(var))]
+    if not rows:
+        return None
+    fig = go.Figure()
+    for label, left, right in rows:
+        fig.add_trace(go.Scatter(x=[left, right], y=[label, label], mode="lines", line={"color": "#d8d2c7", "width": 3}, hoverinfo="skip", showlegend=False))
+    fig.add_trace(go.Scatter(x=[x[1] for x in rows], y=[x[0] for x in rows], mode="markers", name=str(row.departamento_nombre), marker={"color": "#315c4b", "size": 11}))
+    fig.add_trace(go.Scatter(x=[x[2] for x in rows], y=[x[0] for x in rows], mode="markers", name=str(peer.departamento_nombre), marker={"color": "#b66a50", "size": 11, "symbol": "diamond"}))
+    fig.update_layout(height=340, margin=dict(l=10, r=10, t=20, b=30), xaxis_title="Porcentaje", legend_orientation="h")
+    return fig
+
+
 def render_comparables(profiles: pd.DataFrame, pairs: pd.DataFrame, gaps: pd.DataFrame, territory_id: str) -> None:
     row = profile_row(profiles, territory_id)
     st.title("¿Con quién tiene sentido compararlo?")
     st.caption(f"{row.departamento_nombre}, {row.provincia_nombre}")
-    st.info("Estos territorios son similares por sus condiciones estructurales, no por sus resultados educativos.")
+    method_note("Similar significa estructuralmente similar, no educativamente similar. Los resultados no intervienen en la selección de pares.")
     label = st.radio("Universo", ["Nacionales", "Dentro de la provincia"], horizontal=True)
     comparison_type = "nacional" if label == "Nacionales" else "provincial"
     peers = peer_rows(pairs, territory_id, comparison_type)
@@ -67,7 +90,9 @@ def render_comparables(profiles: pd.DataFrame, pairs: pd.DataFrame, gaps: pd.Dat
             st.write("**Similares en:** " + ", ".join(_readable(v) for v in str(peer.variables_mas_similares).split(";")))
             st.write("**Difieren más en:** " + ", ".join(_readable(v) for v in str(peer.principales_diferencias).split(";")))
             st.caption(f"Estabilidad del conjunto de vecinos: {format_value(peer.estabilidad_origen * 100, 'percent')}")
-            st.caption(f"Detalle técnico — distancia estructural: {peer.distancia:.4f}; variables compartidas: {peer.n_variables_usadas}")
+            with st.popover("Ver detalle metodológico"):
+                st.write(f"Distancia estructural: {peer.distancia:.4f}")
+                st.write(f"Variables compartidas: {peer.n_variables_usadas}")
     labels = peers.set_index("par_departamento_id").apply(lambda r: f"{r.par_departamento_nombre} · {r.par_provincia_nombre}", axis=1).to_dict()
     peer_id = st.selectbox("Elegir un par para contrastar", list(labels), format_func=lambda value: labels[value])
     payload = comparison_payload(gaps, territory_id, peer_id, comparison_type)
@@ -82,6 +107,7 @@ def render_comparables(profiles: pd.DataFrame, pairs: pd.DataFrame, gaps: pd.Dat
     cols[1].write("**Diferencias estructurales principales**\n\n" + "\n".join(f"- {_readable(v)}" for v in payload["diferencias"]))
     st.markdown("#### Dónde cambian los resultados")
     st.caption("Brechas absolutas en puntos porcentuales. No indican ganador ni explican causas.")
-    result_columns = st.columns(3)
-    for index, (result, value) in enumerate(payload["brechas"].items()):
-        result_columns[index % 3].metric(result, format_value(value, "number") + " pp" if pd.notna(value) else "Sin comparación")
+    figure = comparison_chart(row, peer_profile)
+    if figure is not None:
+        st.plotly_chart(figure, width="stretch")
+    metric_grid([(result, format_value(value, "number") + " pp" if pd.notna(value) else "Sin comparación", "Brecha absoluta procesada") for result, value in payload["brechas"].items()])
