@@ -1,0 +1,34 @@
+pantalla,seccion,pregunta,componente,dato,interaccion,prioridad_mvp,advertencia,fuente
+Inicio,Presentación,¿Qué hace el producto?,Título y propuesta de valor,texto editorial,leer,Alta,No prometer diagnóstico causal,Documentación del proyecto
+Inicio,Selección,¿Qué territorio quiero conocer?,Buscador territorial,"provincia; departamento; clave",buscar y seleccionar,Alta,Unidad puede ser departamento o equivalente,GeoRef
+Inicio,Selección,¿Dónde está?,Mapa localizador,geometría territorial,seleccionar opcionalmente,Media,Mapa no muestra desempeño,GeoRef
+Inicio,Transparencia,¿Con qué datos trabaja?,Resumen de alcance,"años; fuentes; dimensiones",abrir metodología,Alta,Cobertura variable,Múltiples
+Perfil,Cabecera,¿Dónde estoy?,Identidad territorial,"provincia; nombre; tipo; clave",cambiar territorio,Alta,Clave interna no es código oficial,GeoRef
+Perfil,Cobertura,¿Qué tan completo es?,Etiqueta de completitud,calidad_total_del_perfil,abrir detalle,Alta,No mide calidad educativa,Perfiles territoriales
+Perfil,Señales,¿Qué merece mirar?,Máximo tres tarjetas,"señal; evidencia; confianza",abrir señal,Alta,No es ranking de urgencia,Señales priorizadas
+Perfil,Acceso,¿Cómo es la asistencia?,Dot plot con referencia,asistencia censal por edad,cambiar grupo,Alta,Censo por residencia,Censo 2022
+Perfil,Trayectoria,¿Qué muestra RA?,Dot plots separados,"sobreedad; repetición; salidos sin pase",abrir historia,Alta,Cocientes internos; no causalidad,RA 2025
+Perfil,Oferta,¿Cómo es el despliegue?,Ficha de oferta,"CUE-anexo; CUE; oferta relativa",ver definiciones,Alta,No mide cupos ni distancia,Padrón 2022
+Perfil,Contexto,¿Qué condiciones rodean?,Dots independientes,"internet; computadora; agua; cloaca; vivienda",abrir contexto,Alta,Condición no es causa,Censo 2022
+Perfil,Aprendizaje,¿Qué resultados se publican?,Barras por nivel,"Lengua; Matemática; cobertura",cambiar área,Alta,Solo distribución completa,Aprender 2024
+Historia,Selector,¿Qué indicador sigo?,Selector de indicador,"sobreedad; repetición; salidos sin pase",elegir uno,Alta,No mostrar todas las series juntas,RA 2011-2025
+Historia,Serie,¿Cómo evolucionó?,Línea temporal,"año; valor; ausencia",explorar año,Alta,Rupturas metodológicas posibles,RA 2011-2025
+Historia,Síntesis,¿Qué patrón temporal tiene?,Ficha histórica,"clasificación; n años; mediana; tendencia",ver regla,Alta,Clasificación descriptiva,Serie histórica auditada
+Contexto,Territorio,¿Qué estructura tiene?,Dot plots,"población; superficie; densidad; ruralidad",abrir definición,Alta,Años y unidades distintos,GeoRef/Censo/Padrón
+Contexto,Hogares,¿Qué condiciones sociales hay?,Dot plots,"internet; computadora; agua; cloaca; rancho/casilla",comparar mediana,Alta,No causalidad,Censo 2022
+Contexto,Oferta,¿Qué oferta publicada tiene?,Comparación de oferta,"localizaciones; secundaria/primaria; razones",abrir metodología,Alta,CUE no equivale a CUE-anexo,Padrón 2022
+Comparables,Modo,¿Qué universo de comparación uso?,Alternador,"nacional; provincial",cambiar universo,Alta,No obliga misma provincia,Pares comparables
+Comparables,Vecinos,¿Con quién compararlo?,Lista de hasta cinco pares,"distancia; calidad; estabilidad",seleccionar par,Alta,Orden técnico no educativo,Pares comparables
+Comparables,Explicación,¿Por qué son similares?,Listas estructuradas,"variables similares; diferencias",expandir,Alta,Solo estructura/contexto/oferta,Pares comparables
+Comparables,Cobertura,¿Qué tan firme es el par?,Etiqueta y detalle,"calidad; cobertura; sensibilidad",abrir auditoría,Alta,Calidad de comparación no educativa,Pares comparables
+Contraste,Condiciones,¿Por qué A y B son comparables?,Dots A/B,variables estructurales,cambiar variable,Alta,No usar resultados aquí,Pares comparables
+Contraste,Resultados,¿Dónde difieren?,Brechas A/B,"asistencia; trayectoria; aprendizaje",cambiar resultado,Alta,No declarar ganador,Brechas entre pares
+Contraste,Aprendizaje,¿Puede compararse Aprender?,Estado de cobertura,"completo; parcial; ausente",abrir fuente,Alta,Ambos deben estar completos,Aprender 2024
+Señales,Exploración,¿Qué casos merecen revisión?,Lista no ordenada por gravedad,señales auditadas,filtrar dimensión,Media,No sumar banderas,Perfiles territoriales
+Señales,Evidencia,¿Qué activa la señal?,Detalle de regla,"valor; umbral; año; fuente",abrir perfil,Alta,Umbral relativo no causal,Reglas de banderas
+Señales,Calidad,¿La señal es falta de dato?,Estado documental,"parcial; ausente; cobertura baja",filtrar,Alta,Sin dato no es cero,Múltiples
+Metodología,Buscador,¿Cómo se define?,Buscador de variable,metadata,buscar,Alta,Mostrar universo y denominador,Diccionarios del proyecto
+Metodología,Ficha,¿Cómo se calculó?,Ficha metodológica,"definición; fórmula; comparabilidad; limitación",abrir fuente,Alta,No ocultar advertencia crítica,Diccionarios del proyecto
+Metodología,Glosario,¿Qué significa cada estado?,Glosario,"sin dato; parcial; censal; asociación",leer,Alta,Usar lenguaje consistente,Metodologías del proyecto
+Global,Fuente,¿De dónde sale?,Chip de fuente y año,"fuente; año; fecha",abrir enlace,Alta,Visible junto al dato,Fuente oficial correspondiente
+Global,Compartir,¿Cómo cito esta vista?,Enlace estable,"territorio; sección; indicador",copiar enlace,Post-MVP,Debe conservar versión de datos,Aplicación futura
