@@ -106,7 +106,7 @@ def render_comparables(profiles: pd.DataFrame, pairs: pd.DataFrame, gaps: pd.Dat
     cols[0].write("**Condiciones más similares**\n\n" + "\n".join(f"- {_readable(v)}" for v in payload["similares"]))
     cols[1].write("**Diferencias estructurales principales**\n\n" + "\n".join(f"- {_readable(v)}" for v in payload["diferencias"]))
     st.markdown("#### Dónde cambian los resultados")
-    st.caption("Brechas absolutas en puntos porcentuales. No indican ganador ni explican causas.")
+    st.caption("Asistencia: Censo 2022 · Trayectoria: RA 2025 · Aprendizaje: Aprender 2024. Las brechas absolutas no indican ganador ni explican causas.")
     figure = comparison_chart(row, peer_profile)
     if figure is not None:
         st.plotly_chart(figure, width="stretch")

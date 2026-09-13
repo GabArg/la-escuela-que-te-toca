@@ -1,6 +1,7 @@
 """Funciones de presentación del perfil territorial."""
 from __future__ import annotations
 
+import math
 from typing import Any
 
 import pandas as pd
@@ -12,7 +13,9 @@ from app.components.ui import coverage_text, metric_grid, profile_sentence, sign
 
 def is_missing(value: Any) -> bool:
     try:
-        return bool(pd.isna(value))
+        if bool(pd.isna(value)):
+            return True
+        return isinstance(value, (int, float)) and not math.isfinite(float(value))
     except (TypeError, ValueError):
         return False
 

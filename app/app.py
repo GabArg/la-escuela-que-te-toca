@@ -39,7 +39,7 @@ def render_home(profiles) -> None:
     st.caption(f"{row.provincia_nombre} · Cobertura documental: {row.calidad_total_del_perfil}. No mide calidad educativa.")
     st.button("Explorar territorio", type="primary", on_click=_navigate, args=("Perfil territorial",))
     render_map(profiles, territory_id)
-    method_note("No se construyen scores ni rankings. Cada dimensión conserva su fuente, año, cobertura y limitaciones.")
+    method_note("Las capas combinan Censo y Padrón 2022, Aprender 2024 y Relevamiento Anual 2025: no constituyen una única fotografía temporal. No se construyen scores ni rankings.")
 
 
 def main() -> None:

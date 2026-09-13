@@ -9,6 +9,8 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
+from app.components.data import DataAvailabilityError
+
 ROOT = Path(__file__).resolve().parents[2]
 GEOJSON = ROOT / "data/processed/departamentos_argentina.geojson"
 
@@ -25,7 +27,7 @@ MAP_VARIABLES = {
 @st.cache_data(show_spinner=False)
 def load_geojson() -> dict[str, Any]:
     if not GEOJSON.exists():
-        raise FileNotFoundError("Falta el GeoJSON territorial procesado.")
+        raise DataAvailabilityError("Falta departamentos_argentina.geojson. El deployment debe incluir el bundle procesado.")
     return json.loads(GEOJSON.read_text(encoding="utf-8"))
 
 
@@ -93,7 +95,7 @@ def build_map(profiles: pd.DataFrame, variable_label: str, selected_id: str | No
             marker_line_color="#b66a50", marker_line_width=2.5, hoverinfo="skip",
         ))
     fig.update_geos(fitbounds="locations", visible=False, bgcolor="rgba(0,0,0,0)")
-    fig.update_layout(height=650, margin=dict(l=0, r=0, t=10, b=0), paper_bgcolor="rgba(0,0,0,0)", dragmode=False)
+    fig.update_layout(height=540, margin=dict(l=0, r=0, t=10, b=0), paper_bgcolor="rgba(0,0,0,0)", dragmode=False)
     return fig
 
 
