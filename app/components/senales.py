@@ -4,14 +4,14 @@ from __future__ import annotations
 import pandas as pd
 import streamlit as st
 
+from app.components.territorio import queue_explore_scale, queue_navigation, queue_territory
 from app.components.ui import signal_card
 
 
 def _open_profile(territory_id: str, province: str) -> None:
-    st.session_state.territory_id = territory_id
-    st.session_state.province_sidebar = province
-    st.session_state.territory_sidebar = territory_id
-    st.session_state.nav_section = "Perfil territorial"
+    queue_territory(territory_id)
+    queue_explore_scale("territorio")
+    queue_navigation("Explorar")
 
 
 def filter_signals(signals: pd.DataFrame, province: str | None = None, dimension: str | None = None, signal_type: str | None = None) -> pd.DataFrame:
@@ -22,25 +22,37 @@ def filter_signals(signals: pd.DataFrame, province: str | None = None, dimension
     return result.sort_values(["provincia_nombre", "departamento_nombre", "dimension"])
 
 
-def render_signals(signals: pd.DataFrame) -> None:
-    st.title("Dónde mirar")
-    st.write("Señales para orientar la mirada investigativa. No están ordenadas por gravedad y no forman un score.")
-    cols = st.columns(3)
-    province = cols[0].selectbox("Provincia", ["Todas", *sorted(signals.provincia_nombre.unique())], key="signals_province")
-    dimension = cols[1].selectbox("Dimensión", ["Todas", *sorted(signals.dimension.unique())], key="signals_dimension")
-    signal_type = cols[2].selectbox("Tipo de señal", ["Todas", *sorted(signals.senal.unique())], key="signals_type")
-    filtered = filter_signals(signals, province, dimension, signal_type)
+def render_signals(signals: pd.DataFrame, selected_province: str) -> None:
+    st.markdown('<div class="eyebrow">Investigar</div>', unsafe_allow_html=True)
+    st.title("Radar territorial de investigación")
+    st.markdown('<p class="lede">Señales para decidir dónde hacer una segunda pregunta, no para ordenar territorios.</p>', unsafe_allow_html=True)
+    st.subheader("¿Qué querés investigar?")
+    dimensions = sorted(signals.dimension.dropna().unique())
+    dimension = st.radio("Dimensión", dimensions, horizontal=True, key="radar_dimension")
+    scope_options = ["Toda Argentina", selected_province]
+    if st.session_state.get("radar_scope") not in scope_options:
+        st.session_state.radar_scope = "Toda Argentina"
+    scope = st.radio(
+        "Ámbito territorial",
+        scope_options,
+        horizontal=True,
+        key="radar_scope",
+    )
+    province = None if scope == "Toda Argentina" else selected_province
+    filtered = filter_signals(signals, province, dimension)
     if filtered.empty:
         st.info("No hay señales para esta combinación de filtros.")
         return
     st.caption(f"{len(filtered)} señales visibles, en orden alfabético territorial; no es un orden de gravedad.")
-    options = filtered.drop_duplicates("departamento_id").set_index("departamento_id").apply(lambda r: f"{r.departamento_nombre} · {r.provincia_nombre}", axis=1).to_dict()
-    selected = st.selectbox("Abrir un perfil", list(options), format_func=lambda value: options[value])
-    selected_row = filtered.loc[filtered.departamento_id.eq(selected)].iloc[0]
-    st.button("Ver perfil territorial", on_click=_open_profile, args=(selected, selected_row.provincia_nombre))
     st.markdown('<div class="section-rule"></div>', unsafe_allow_html=True)
-    for _, row in filtered.head(40).iterrows():
+    for index, row in filtered.head(40).iterrows():
         st.markdown(f'<div class="signal-territory">{row.departamento_nombre}, {row.provincia_nombre}</div>', unsafe_allow_html=True)
         signal_card(row.dimension, row.senal, row.evidencia, row.nivel_confianza)
+        st.button(
+            "Ver territorio",
+            key=f"signal_open_{row.departamento_id}_{index}",
+            on_click=_open_profile,
+            args=(row.departamento_id, row.provincia_nombre),
+        )
     if len(filtered) > 40:
         st.caption("Se muestran las primeras 40 coincidencias para mantener una lectura clara. Ajustá los filtros para acotar.")

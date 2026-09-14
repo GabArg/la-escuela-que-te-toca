@@ -1,6 +1,8 @@
 """Presentación del motor de pares y contraste posterior."""
 from __future__ import annotations
 
+from html import escape
+
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
@@ -89,40 +91,70 @@ def comparison_chart(row: pd.Series, peer: pd.Series) -> go.Figure | None:
     return fig
 
 
-def render_comparables(profiles: pd.DataFrame, pairs: pd.DataFrame, gaps: pd.DataFrame, territory_id: str) -> None:
+def _choose_peer(peer_id: str, territory_id: str) -> None:
+    st.session_state[f"peer_choice_{territory_id}"] = peer_id
+
+
+def peer_card_html(peer: pd.Series) -> str:
+    similar = " · ".join(_readable(v) for v in str(peer.variables_mas_similares).split(";"))
+    different = " · ".join(_readable(v) for v in str(peer.principales_diferencias).split(";"))
+    return (
+        '<article class="peer-card"><div class="peer-index">Territorio comparable</div>'
+        f'<h3>{escape(str(peer.par_departamento_nombre))}</h3>'
+        f'<div class="peer-meta">{escape(str(peer.par_provincia_nombre))} · '
+        f'{escape(str(peer.calidad_comparacion))}</div>'
+        '<div class="peer-similarity"><span>Se parece especialmente en</span>'
+        f'<strong>{escape(similar)}</strong></div>'
+        '<p class="peer-difference"><span>Se diferencia más en:</span> '
+        f'{escape(different)}</p></article>'
+    )
+
+
+def render_comparables(profiles: pd.DataFrame, pairs: pd.DataFrame, gaps: pd.DataFrame, territory_id: str, embedded: bool = False) -> None:
     row = profile_row(profiles, territory_id)
-    st.title("¿Con quién tiene sentido compararlo?")
+    if embedded:
+        st.subheader("¿Con qué territorios tiene sentido compararlo?")
+    else:
+        st.markdown('<div class="eyebrow">Comparación estructural</div>', unsafe_allow_html=True)
+        st.title("¿Con qué territorios tiene sentido compararlo?")
     st.caption(f"{row.departamento_nombre}, {row.provincia_nombre}")
-    method_note("Similar significa estructuralmente similar, no educativamente similar. Los resultados no intervienen en la selección de pares.")
-    label = st.radio("Universo", ["Nacionales", "Dentro de la provincia"], horizontal=True)
+    method_note("La similitud usa población, contexto y oferta; no usa resultados educativos. Similitud estructural no implica equivalencia institucional.")
+    label = st.radio(
+        "Alcance", ["Nacionales", "Dentro de la provincia"],
+        horizontal=True, key=f"peer_scope_{territory_id}",
+    )
     comparison_type = "nacional" if label == "Nacionales" else "provincial"
     peers = peer_rows(pairs, territory_id, comparison_type)
     if peers.empty:
-        st.warning("No se encontraron pares elegibles con cobertura suficiente para esta especificación.")
+        st.info("No se encontraron pares elegibles con cobertura suficiente. Esto no describe el desempeño del territorio.")
         return
     for _, peer in peers.iterrows():
-        with st.expander(f"{peer.par_departamento_nombre} · {peer.par_provincia_nombre} — {peer.calidad_comparacion}"):
-            st.write("**Similares en:** " + ", ".join(_readable(v) for v in str(peer.variables_mas_similares).split(";")))
-            st.write("**Difieren más en:** " + ", ".join(_readable(v) for v in str(peer.principales_diferencias).split(";")))
-            st.caption(f"Estabilidad del conjunto de vecinos: {format_value(peer.estabilidad_origen * 100, 'percent')}")
-            with st.popover("Ver detalle metodológico"):
-                st.write(f"Distancia estructural: {peer.distancia:.4f}")
-                st.write(f"Variables compartidas: {peer.n_variables_usadas}")
+        st.markdown(peer_card_html(peer), unsafe_allow_html=True)
+        st.button(
+            f"Contrastar con {peer.par_departamento_nombre} →",
+            key=f"choose_{territory_id}_{peer.par_departamento_id}_{comparison_type}",
+            on_click=_choose_peer, args=(peer.par_departamento_id, territory_id),
+        )
     labels = peers.set_index("par_departamento_id").apply(lambda r: f"{r.par_departamento_nombre} · {r.par_provincia_nombre}", axis=1).to_dict()
-    peer_id = st.selectbox("Elegir un par para contrastar", list(labels), format_func=lambda value: labels[value])
+    choice_key = f"peer_choice_{territory_id}"
+    if st.session_state.get(choice_key) not in labels:
+        st.session_state[choice_key] = next(iter(labels))
+    peer_id = st.session_state[choice_key]
     payload = comparison_payload(gaps, territory_id, peer_id, comparison_type)
     peer_profile = profile_row(profiles, peer_id)
-    st.subheader(f"{row.departamento_nombre} vs. {peer_profile.departamento_nombre}")
+    st.markdown('<div class="chapter-break"><span>Contraste</span></div>', unsafe_allow_html=True)
+    st.subheader(f"{row.departamento_nombre} ↔ {peer_profile.departamento_nombre}")
+    st.markdown('<p class="lede">Si estos territorios se parecen estructuralmente, ¿qué diferencias educativas aparecen?</p>', unsafe_allow_html=True)
     if payload is None:
         st.info("No hay contraste procesado para este par.")
         return
     st.markdown("#### Por qué son comparables")
-    cols = st.columns(2)
-    cols[0].write("**Condiciones más similares**\n\n" + "\n".join(f"- {_readable(v)}" for v in payload["similares"]))
-    cols[1].write("**Diferencias estructurales principales**\n\n" + "\n".join(f"- {_readable(v)}" for v in payload["diferencias"]))
+    st.write("**Condiciones más similares:** " + ", ".join(_readable(v) for v in payload["similares"]))
+    st.write("**Diferencias estructurales principales:** " + ", ".join(_readable(v) for v in payload["diferencias"]))
     st.markdown("#### Dónde cambian los resultados")
     st.caption("Asistencia: Censo 2022 · Trayectoria: RA 2025 · Aprendizaje: Aprender 2024. Las brechas absolutas no indican ganador ni explican causas.")
     figure = comparison_chart(row, peer_profile)
     if figure is not None:
-        st.plotly_chart(figure, width="stretch")
+        st.plotly_chart(figure, use_container_width=True)
     metric_grid([(result, format_value(value, "number") + " pp" if pd.notna(value) else "Sin comparación", "Brecha absoluta procesada") for result, value in payload["brechas"].items()])
+    method_note("Pregunta para investigar: ¿qué factores no observados podrían acompañar estas diferencias? La comparación no identifica causas ni evalúa gestiones.")

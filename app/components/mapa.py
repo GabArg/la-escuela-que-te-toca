@@ -19,6 +19,15 @@ MAP_VARIABLES = {
     "Lengua: satisfactorio + avanzado": ("lengua_satisfactorio_o_avanzado_2024", "%", "lengua"),
 }
 
+ARGENTINA_CENTER = {"lat": -38.4, "lon": -64.2}
+ARGENTINA_PROJECTION_SCALE = 5.5
+MAP_CONFIG = {
+    "displaylogo": False,
+    # Plotly Geo no ofrece minZoom. El encuadre inicial funciona como mínimo:
+    # se puede acercar, desplazar y volver a él, pero no alejar más el país.
+    "modeBarButtonsToRemove": ["zoomOutGeo"],
+}
+
 
 @st.cache_data(show_spinner=False)
 def load_geojson() -> dict[str, Any]:
@@ -47,6 +56,14 @@ def territory_from_selection(event: Any) -> str | None:
     if isinstance(point, dict):
         return str(point.get("location") or (point.get("customdata") or [None])[0]) if point.get("location") or point.get("customdata") else None
     return str(getattr(point, "location", "")) or None
+
+
+def queue_map_selection(state: Any, clicked: str | None, selected_id: str, valid_ids: set[str]) -> bool:
+    """Encola sólo la selección; navegar requiere el CTA del preview."""
+    if clicked and clicked != selected_id and clicked in valid_ids:
+        state["pending_territory_id"] = clicked
+        return True
+    return False
 
 
 def _display_value(value: object, variable: str | None, suffix: str) -> str:
@@ -89,17 +106,33 @@ def build_map(profiles: pd.DataFrame, variable_label: str, selected_id: str | No
             colorscale=[[0, "rgba(0,0,0,0)"], [1, "rgba(0,0,0,0)"]], showscale=False,
             marker_line_color="#b66a50", marker_line_width=2.5, hoverinfo="skip",
         ))
-    fig.update_geos(fitbounds="locations", visible=False, bgcolor="rgba(0,0,0,0)")
-    fig.update_layout(height=540, margin=dict(l=0, r=0, t=10, b=0), paper_bgcolor="rgba(0,0,0,0)", dragmode=False)
+    is_national_view = data.provincia_nombre.nunique() > 1
+    if is_national_view:
+        fig.update_geos(
+            center=ARGENTINA_CENTER,
+            projection_scale=ARGENTINA_PROJECTION_SCALE,
+            visible=False,
+            bgcolor="rgba(0,0,0,0)",
+        )
+    else:
+        # El encuadre provincial existente se conserva sin modificaciones.
+        fig.update_geos(fitbounds="locations", visible=False, bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(height=480, margin=dict(l=0, r=0, t=10, b=0), paper_bgcolor="rgba(0,0,0,0)", dragmode=False)
     return fig
 
 
-def render_map(profiles: pd.DataFrame, selected_id: str) -> None:
-    label = st.selectbox("Colorear por", list(MAP_VARIABLES), key="map_variable")
-    event = st.plotly_chart(build_map(profiles, label, selected_id), width="stretch", on_select="rerun", selection_mode="points", key="territory_map")
+def render_map(profiles: pd.DataFrame, selected_id: str, key: str = "map_territory") -> None:
+    label = st.selectbox("Qué dimensión querés mirar", list(MAP_VARIABLES), key=f"{key}_variable")
+    event = st.plotly_chart(
+        build_map(profiles, label, selected_id),
+        use_container_width=True,
+        on_select="rerun",
+        selection_mode="points",
+        config=MAP_CONFIG,
+        key=key,
+    )
     clicked = territory_from_selection(event)
-    if clicked and clicked != selected_id and clicked in set(profiles.departamento_id.astype(str)):
-        st.session_state.pending_territory_id = clicked
+    if queue_map_selection(st.session_state, clicked, selected_id, set(profiles.departamento_id.astype(str))):
         st.rerun()
     st.markdown(
         '<div class="map-footer">'

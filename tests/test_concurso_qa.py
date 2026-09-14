@@ -38,10 +38,21 @@ def test_signal_evidence_removes_internal_tokens():
 
 
 def test_all_views_render_without_exceptions():
-    for section in ["Inicio", "Perfil territorial", "Historia", "Comparables", "Dónde mirar", "Metodología"]:
+    cases = [
+        ("Explorar", "home"),
+        ("Explorar", "argentina"),
+        ("Explorar", "provincia"),
+        ("Explorar", "territorio"),
+        ("Comparar", None),
+        ("Investigar", None),
+        ("Metodología", None),
+    ]
+    for section, scale in cases:
         app = AppTest.from_file("app/app.py", default_timeout=40)
         app.session_state["territory_id"] = "70070"
         app.session_state["nav_section"] = section
+        if scale:
+            app.session_state["explore_scale"] = scale
         app.run()
         assert not app.exception
         assert not app.error

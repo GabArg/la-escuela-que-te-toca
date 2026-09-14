@@ -1,11 +1,12 @@
 import pandas as pd
 import pytest
 
-from app.components.comparables import comparison_payload, peer_rows
+from app.components.comparables import comparison_payload, peer_card_html, peer_rows
 from app.components.historia import history_series, history_summary
 from app.components.perfil import format_value, learning_distribution, profile_row, signal_rows
+from app.components.preview import signal_count_text, territory_preview_data
 from app.components.senales import filter_signals
-from app.components.territorio import territory_options
+from app.components.territorio import consume_pending_navigation, territory_options
 
 
 @pytest.fixture(scope="module")
@@ -99,6 +100,67 @@ def test_territory_cascade(profiles):
     options = territory_options(profiles, "La Pampa")
     assert "Trenel" in set(options.departamento_nombre)
     assert options.provincia_nombre.eq("La Pampa").all()
+
+
+def test_navigation_is_deferred_until_next_rerun():
+    state = {"nav_section": "Explorar", "pending_nav_section": "Comparar"}
+    selected = consume_pending_navigation(state, ["Explorar", "Comparar", "Investigar", "Metodología"])
+    assert selected == "Comparar"
+    assert state["nav_section"] == "Comparar"
+    assert "pending_nav_section" not in state
+
+
+def test_map_preview_uses_existing_profile_and_signals(profiles, signals):
+    preview = territory_preview_data(profiles, signals, "70070")
+    assert preview["territorio"] == "Pocito"
+    assert preview["provincia"] == "San Juan"
+    assert preview["cantidad_senales"] == len(signals[signals.departamento_id.eq("70070")])
+    assert len(preview["senales"]) <= 2
+
+
+@pytest.mark.parametrize(
+    ("count", "expected"),
+    [
+        (0, "No se activan señales prioritarias con los criterios actuales. Esto no implica ausencia de problemas."),
+        (1, "1 señal para mirar"),
+        (2, "2 señales para mirar"),
+    ],
+)
+def test_map_preview_signal_count_copy(count, expected):
+    assert signal_count_text(count) == expected
+
+
+def test_map_preview_prioritizes_at_most_two_signals(profiles):
+    territory_id = str(profiles.iloc[0].departamento_id)
+    signals = pd.DataFrame(
+        {
+            "departamento_id": [territory_id] * 3,
+            "prioridad": [3, 1, 2],
+            "dimension": ["Contexto", "Trayectoria", "Oferta"],
+            "senal": ["Tercera", "Primera", "Segunda"],
+            "evidencia": ["c", "a", "b"],
+        }
+    )
+    preview = territory_preview_data(profiles, signals, territory_id)
+    assert [item["senal"] for item in preview["senales"]] == ["Primera", "Segunda"]
+    assert preview["cantidad_senales"] == 3
+
+
+def test_comparable_card_keeps_scan_hierarchy_and_cta_data():
+    peer = pd.Series(
+        {
+            "par_departamento_nombre": "Bolívar",
+            "par_provincia_nombre": "Buenos Aires",
+            "calidad_comparacion": "Alta comparabilidad",
+            "variables_mas_similares": "densidad_poblacional;superficie_km2;poblacion_total",
+            "principales_diferencias": "porcentaje_hogares_cloaca_2022;relacion_cue_secundaria_primaria_2022",
+        }
+    )
+    html = peer_card_html(peer)
+    assert "Territorio comparable" in html
+    assert "Se parece especialmente en" in html
+    assert "Se diferencia más en" in html
+    assert "Bolívar" in html
 
 
 @pytest.mark.parametrize("territory_id", ["70070", "34063", "42147", "02007", "06861", "06182"])

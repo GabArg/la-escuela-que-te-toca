@@ -33,10 +33,14 @@ def history_summary(row: pd.Series, indicator: str) -> dict[str, object]:
     }
 
 
-def render_history(profiles: pd.DataFrame, history: pd.DataFrame, territory_id: str) -> None:
+def render_history(profiles: pd.DataFrame, history: pd.DataFrame, territory_id: str, embedded: bool = False) -> None:
     row = profile_row(profiles, territory_id)
-    st.title("¿Esto viene de antes?")
-    st.caption(f"{row.departamento_nombre}, {row.provincia_nombre}")
+    if embedded:
+        st.subheader("¿Cómo llegó hasta acá?")
+        st.caption("Evolución territorial: una variable por vez.")
+    else:
+        st.title("¿Cómo llegó hasta acá?")
+        st.caption(f"{row.departamento_nombre}, {row.provincia_nombre}")
     indicator = st.selectbox("Indicador", list(HISTORY_OPTIONS), key="history_indicator")
     series = history_series(history, territory_id, indicator)
     summary = history_summary(row, indicator)
@@ -59,5 +63,5 @@ def render_history(profiles: pd.DataFrame, history: pd.DataFrame, territory_id: 
     figure.update_layout(height=430, xaxis_title="Año", yaxis_title="Porcentaje", margin=dict(l=20, r=20, t=35, b=20),
                          plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
                          xaxis=dict(gridcolor="#ede9e0"), yaxis=dict(gridcolor="#ede9e0"))
-    st.plotly_chart(figure, width="stretch")
+    st.plotly_chart(figure, use_container_width=True)
     method_note("Serie descriptiva RA 2011–2025. El período 2020–2022 requiere cautela metodológica; el gráfico no atribuye causas.")
