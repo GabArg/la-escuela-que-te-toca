@@ -1,3 +1,5 @@
+import json
+
 import pandas as pd
 
 from app.components.comparables import comparison_chart
@@ -11,6 +13,9 @@ from app.components.mapa import (
     territory_from_selection,
 )
 from app.components.perfil import profile_row
+from app.components.story_visuals import national_trajectory_svg, territory_mesh_svg, territory_silhouette_svg
+from app.components.data import load_history
+from app.components.mapa import load_geojson
 from app.components.ui import coverage_text, profile_sentence
 
 
@@ -86,3 +91,31 @@ def test_ab_chart_uses_observed_values_only():
     figure = comparison_chart(profile_row(profiles, "70070"), profile_row(profiles, "02007"))
     assert figure is not None
     assert len(figure.data) >= 3
+
+
+def test_story_territory_mesh_uses_all_geometries_without_mutating_them():
+    geojson = load_geojson()
+    before = json.dumps(geojson, sort_keys=True)
+    svg = territory_mesh_svg(geojson, ("34063", "86140"), connect=True)
+    assert 'data-territories="529"' in svg
+    assert svg.count('data-territory="') == 529
+    assert svg.count('class="territory-accent"') == 2
+    assert "territory-connection" in svg
+    assert "<title" not in svg
+    assert json.dumps(geojson, sort_keys=True) == before
+
+
+def test_story_trajectory_is_derived_from_the_existing_history():
+    svg = national_trajectory_svg(load_history())
+    assert "Trayectoria nacional de la sobreedad entre 2011 y 2025" in svg
+    assert "<path" in svg and svg.count("<circle") == 2
+
+
+def test_guided_case_uses_real_noninteractive_territory_silhouettes():
+    geojson = load_geojson()
+    for territory_id, label in [("34063", "Ramón Lista"), ("86140", "Quebrachos")]:
+        svg = territory_silhouette_svg(geojson, territory_id, label)
+        assert f'data-territory="{territory_id}"' in svg
+        assert f'aria-label="Silueta real de {label}"' in svg
+        assert "<path" in svg
+        assert "<title" not in svg and "hover" not in svg

@@ -18,10 +18,11 @@ sys.path.insert(0, root_path)
 
 from app.components.comparables import render_comparables
 from app.components.data import DataAvailabilityError, load_gaps, load_history, load_pairs, load_profiles, load_signals
-from app.components.escalas import render_argentina, render_home, render_province
+from app.components.escalas import render_argentina, render_province
 from app.components.metodologia import render_methodology
 from app.components.perfil import render_profile
 from app.components.senales import render_signals
+from app.components.storytelling import render_storytelling_home
 from app.components.territorio import (
     apply_pending_explore_scale,
     apply_pending_navigation,
@@ -66,18 +67,32 @@ def main() -> None:
         st.session_state.explore_scale = "home"
     apply_pending_territory(profiles)
 
+    is_story_home = (
+        st.session_state.get("nav_section") == "Explorar"
+        and st.session_state.get("explore_scale") == "home"
+    )
+    if is_story_home:
+        st.markdown(
+            '<style data-story-shell>'
+            '[data-testid="stSidebar"], [data-testid="collapsedControl"], header[data-testid="stHeader"] {display:none !important;}'
+            '[data-testid="stAppViewContainer"] {overflow-x:clip;}'
+            '.block-container {max-width:min(1540px, 96vw) !important; padding-top:0 !important;}'
+            '</style>',
+            unsafe_allow_html=True,
+        )
+
     st.sidebar.markdown('<div class="brand-lockup"><span>LA ESCUELA</span><strong>que te toca</strong></div>', unsafe_allow_html=True)
     territory_id = render_selector(profiles)
     current = profiles.loc[profiles.departamento_id.eq(territory_id)].iloc[0]
     st.sidebar.button("Abrir ficha territorial", type="primary", on_click=_open_territory, use_container_width=True)
     st.sidebar.caption("Datos abiertos oficiales · Sin rankings · Lectura no causal")
 
-    section = render_main_navigation()
+    section = "Explorar" if is_story_home else render_main_navigation()
     try:
         if section == "Explorar":
             scale = st.session_state.explore_scale
             if scale == "home":
-                render_home()
+                render_storytelling_home(profiles, load_pairs(), load_gaps(), load_history())
             elif scale == "argentina":
                 render_argentina(profiles, signals, territory_id)
             elif scale == "provincia":

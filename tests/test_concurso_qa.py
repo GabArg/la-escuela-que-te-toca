@@ -66,3 +66,61 @@ def test_cross_province_state_transition_is_tolerant():
     assert app.session_state["territory_id"] == "34063"
     assert not app.exception
     assert not app.error
+
+
+def test_home_storytelling_has_thesis_limits_and_navigation_ctas():
+    app = AppTest.from_file("app/app.py", default_timeout=40)
+    app.session_state["nav_section"] = "Explorar"
+    app.session_state["explore_scale"] = "home"
+    app.run()
+    text = "\n".join(element.value for element in app.markdown)
+    assert "Mismo país" in text
+    assert "Lo que un promedio no muestra" in text
+    assert "Ramón Lista" in text and "Quebrachos" in text
+    assert "Relevamiento Anual 2025" in text and "Censo 2022" in text
+    assert "no implica causalidad" in text
+    assert "ranking" not in text.lower() and "score" not in text.lower()
+    assert app.button(key="story_intro_argentina")
+    assert app.button(key="story_intro_territorio")
+
+
+def test_storytelling_ctas_reuse_deferred_explore_navigation():
+    app = AppTest.from_file("app/app.py", default_timeout=40)
+    app.run()
+    app.button(key="story_intro_argentina").click().run()
+    assert app.session_state["nav_section"] == "Explorar"
+    assert app.session_state["explore_scale"] == "argentina"
+
+    app = AppTest.from_file("app/app.py", default_timeout=40)
+    app.run()
+    app.button(key="story_intro_territorio").click().run()
+    assert app.session_state["nav_section"] == "Explorar"
+    assert app.session_state["explore_scale"] == "territorio"
+
+    app = AppTest.from_file("app/app.py", default_timeout=40)
+    app.run()
+    assert app.button(key="story_explore_argentina").label == "Explorar el país →"
+    assert app.button(key="story_explore_provincia").label == "Elegir provincia →"
+    assert app.button(key="story_explore_territorio").label == "Buscar territorio →"
+    app.button(key="story_explore_provincia").click().run()
+    assert app.session_state["nav_section"] == "Explorar"
+    assert app.session_state["explore_scale"] == "provincia"
+
+
+def test_storytelling_hides_streamlit_shell_only_on_home():
+    home = AppTest.from_file("app/app.py", default_timeout=40)
+    home.session_state["nav_section"] = "Explorar"
+    home.session_state["explore_scale"] = "home"
+    home.run()
+    home_markup = "\n".join(element.value for element in home.markdown)
+    assert 'data-story-shell' in home_markup
+    assert '[data-testid="stSidebar"]' in home_markup
+    assert "overflow-x:clip" in home_markup
+
+    functional = AppTest.from_file("app/app.py", default_timeout=40)
+    functional.session_state["nav_section"] = "Explorar"
+    functional.session_state["explore_scale"] = "argentina"
+    functional.run()
+    functional_markup = "\n".join(element.value for element in functional.markdown)
+    assert 'data-story-shell' not in functional_markup
+    assert functional.sidebar

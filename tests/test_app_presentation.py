@@ -6,6 +6,7 @@ from app.components.historia import history_series, history_summary
 from app.components.perfil import format_value, learning_distribution, profile_row, signal_rows
 from app.components.preview import signal_count_text, territory_preview_data
 from app.components.senales import filter_signals
+from app.components.storytelling import guided_case_data, national_overage_story
 from app.components.territorio import consume_pending_navigation, territory_options
 
 
@@ -161,6 +162,35 @@ def test_comparable_card_keeps_scan_hierarchy_and_cta_data():
     assert "Se parece especialmente en" in html
     assert "Se diferencia más en" in html
     assert "Bolívar" in html
+
+
+def test_storytelling_national_overage_uses_existing_counts():
+    from app.components.data import load_history
+
+    values = national_overage_story(load_history())
+    assert values["2011"] == pytest.approx(27.9726456585)
+    assert values["2025"] == pytest.approx(11.8807598612)
+
+
+def test_guided_case_resolves_existing_ramón_lista_quebrachos_pair(profiles):
+    pairs = pd.read_parquet("data/processed/pares_comparables.parquet")
+    gaps = pd.read_parquet("data/processed/brechas_entre_pares.parquet")
+    case = guided_case_data(profiles, pairs, gaps)
+    assert (case["origin_name"], case["peer_name"]) == ("Ramón Lista", "Quebrachos")
+    assert case["dropout_gap"] == pytest.approx(9.150448)
+    assert case["origin_attendance"] == pytest.approx(76.780186)
+    assert case["dropout_year"] == 2025
+    assert case["attendance_year"] == 2022
+    assert case["dropout_source"] == "Relevamiento Anual 2025"
+    assert case["attendance_source"] == "Censo 2022"
+    assert all(case["dimensions"].values())
+    assert len(case["comparisons"]) == 6
+    assert {item["variable"] for item in case["comparisons"]}.issubset(case["structural_variables"])
+    assert not any(
+        outcome in item["variable"]
+        for item in case["comparisons"]
+        for outcome in ("sobreedad", "repeticion", "salidos", "asistencia", "lengua", "matematica")
+    )
 
 
 @pytest.mark.parametrize("territory_id", ["70070", "34063", "42147", "02007", "06861", "06182"])
