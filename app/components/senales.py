@@ -23,6 +23,7 @@ def filter_signals(signals: pd.DataFrame, province: str | None = None, dimension
 
 
 def render_signals(signals: pd.DataFrame, selected_province: str) -> None:
+    st.markdown('<span class="functional-view-marker functional-view--research" aria-hidden="true"></span>', unsafe_allow_html=True)
     st.markdown('<div class="eyebrow">Investigar</div>', unsafe_allow_html=True)
     st.title("Radar territorial de investigación")
     st.markdown('<p class="lede">Señales para decidir dónde hacer una segunda pregunta, no para ordenar territorios.</p>', unsafe_allow_html=True)

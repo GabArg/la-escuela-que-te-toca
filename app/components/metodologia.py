@@ -5,6 +5,7 @@ import streamlit as st
 
 
 def render_methodology() -> None:
+    st.markdown('<span class="functional-view-marker functional-view--methodology" aria-hidden="true"></span>', unsafe_allow_html=True)
     st.title("Metodología")
     st.write("Una guía breve para interpretar la aplicación. La documentación completa está en `docs/metodologia/` y `docs/producto/`.")
     sections = {

@@ -60,7 +60,7 @@ def _signal_summary(signals: pd.DataFrame, province: str | None = None) -> None:
     st.markdown("#### Señales que orientan la investigación")
     st.caption("Cantidad de señales auditadas por dimensión. No expresa gravedad ni calidad.")
     figure = go.Figure(go.Bar(
-        x=counts.values, y=counts.index, orientation="h", marker_color="#315c4b",
+        x=counts.values, y=counts.index, orientation="h", marker_color="#18324a",
         text=counts.values, textposition="outside",
     ))
     figure.update_layout(height=max(230, len(counts) * 46), margin=dict(l=10, r=40, t=10, b=20),
@@ -75,6 +75,17 @@ def _map_with_preview(
     selected_id: str,
     key: str,
 ) -> None:
+    if key in {"argentina", "provincia"}:
+        with st.container(key=f"{key}_workspace"):
+            map_column, preview_column = st.columns([7, 3], gap="medium")
+            with map_column:
+                with st.container(key=f"{key}_map_panel"):
+                    st.markdown('<div class="workspace-module-label">Exploración territorial</div>', unsafe_allow_html=True)
+                    render_map(profiles, selected_id, key=f"map_{key}", height=405 if key == "argentina" else 430)
+            with preview_column:
+                territory_preview(profiles, signals, selected_id, key=key)
+        return
+
     map_column, preview_column = st.columns([7, 3], gap="large")
     with map_column:
         render_map(profiles, selected_id, key=f"map_{key}")
@@ -84,20 +95,32 @@ def _map_with_preview(
 
 def render_argentina(profiles: pd.DataFrame, signals: pd.DataFrame, selected_id: str) -> None:
     render_breadcrumb()
-    st.markdown('<div class="eyebrow">Escala nacional</div>', unsafe_allow_html=True)
-    st.title("Argentina")
-    st.markdown('<p class="lede">¿Dónde aparecen diferencias territoriales que merecen una segunda mirada?</p>', unsafe_allow_html=True)
+    with st.container(key="argentina_header"):
+        st.markdown('<div class="eyebrow">Escala nacional</div>', unsafe_allow_html=True)
+        st.title("Argentina")
+        st.markdown('<p class="lede">¿Dónde aparecen diferencias territoriales que merecen una segunda mirada?</p>', unsafe_allow_html=True)
     _map_with_preview(profiles, signals, selected_id, key="argentina")
-    _signal_summary(signals)
-    method_note("El mapa permite detectar diferencias, no ordenar territorios. Seleccioná distintas unidades y abrí una ficha cuando quieras profundizar.")
+    with st.container(key="argentina_analysis"):
+        signals_column, note_column = st.columns([7, 3], gap="medium")
+        with signals_column:
+            with st.container(key="argentina_signals"):
+                st.markdown('<div class="workspace-module-label">Señales</div>', unsafe_allow_html=True)
+                _signal_summary(signals)
+        with note_column:
+            with st.container(key="argentina_method"):
+                st.markdown('<div class="workspace-module-label">Lectura</div>', unsafe_allow_html=True)
+                method_note("El mapa permite detectar diferencias, no ordenar territorios. Seleccioná distintas unidades y abrí una ficha cuando quieras profundizar.")
 
 
 def render_province(profiles: pd.DataFrame, signals: pd.DataFrame, province: str, selected_id: str) -> None:
     subset = profiles[profiles.provincia_nombre.eq(province)]
-    st.markdown('<div class="eyebrow">Escala provincial</div>', unsafe_allow_html=True)
-    st.title(province)
-    st.markdown('<p class="lede">¿Qué diferencias aparecen dentro de esta provincia?</p>', unsafe_allow_html=True)
+    with st.container(key="provincia_header"):
+        st.markdown('<div class="eyebrow">Escala provincial</div>', unsafe_allow_html=True)
+        st.title(province)
+        st.markdown('<p class="lede">¿Qué diferencias aparecen dentro de esta provincia?</p>', unsafe_allow_html=True)
     _map_with_preview(subset, signals, selected_id, key="provincia")
     st.caption(f"{len(subset)} departamentos o unidades territoriales equivalentes según GeoRef.")
-    _signal_summary(signals, province)
+    with st.container(key="provincia_signals"):
+        st.markdown('<div class="workspace-module-label">Señales</div>', unsafe_allow_html=True)
+        _signal_summary(signals, province)
     render_breadcrumb(province)

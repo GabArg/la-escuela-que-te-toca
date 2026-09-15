@@ -81,7 +81,14 @@ def main() -> None:
             unsafe_allow_html=True,
         )
 
+    is_argentina_workspace = (
+        st.session_state.get("nav_section") == "Explorar"
+        and st.session_state.get("explore_scale") == "argentina"
+    )
+
     st.sidebar.markdown('<div class="brand-lockup"><span>LA ESCUELA</span><strong>que te toca</strong></div>', unsafe_allow_html=True)
+    if not is_story_home:
+        st.sidebar.markdown('<div class="sidebar-section-label">Ubicación</div>', unsafe_allow_html=True)
     territory_id = render_selector(profiles)
     current = profiles.loc[profiles.departamento_id.eq(territory_id)].iloc[0]
     st.sidebar.button("Abrir ficha territorial", type="primary", on_click=_open_territory, use_container_width=True)

@@ -68,7 +68,7 @@ def reference_plot(label: str, value: Any, provincial: Any, national: Any, suffi
         return None
     figure = go.Figure(go.Scatter(x=[v for _, v in observed], y=[label] * len(observed), mode="markers+text",
                                   text=[name for name, _ in observed], textposition="top center",
-                                  marker={"size": [13] + [9] * (len(observed) - 1), "color": ["#315c4b"] + ["#9b8f83"] * (len(observed) - 1)}))
+                                  marker={"size": [13] + [9] * (len(observed) - 1), "color": ["#18324a"] + ["#7d929d"] * (len(observed) - 1)}))
     figure.update_layout(height=170, margin=dict(l=10, r=10, t=35, b=20), xaxis_title=suffix, showlegend=False,
                          plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
     figure.update_yaxes(visible=False)
@@ -90,6 +90,7 @@ def render_profile(
 ) -> None:
     row = profile_row(profiles, territory_id)
     selected = signal_rows(signals, territory_id)
+    st.markdown('<span class="functional-view-marker functional-view--territory" aria-hidden="true"></span>', unsafe_allow_html=True)
     if show_breadcrumb:
         from app.components.escalas import render_breadcrumb
         render_breadcrumb(str(row.provincia_nombre), str(row.departamento_nombre))
@@ -170,7 +171,7 @@ def render_profile(
             else:
                 st.info("Sin información identificable.")
             continue
-        figure = go.Figure(go.Bar(x=list(distribution.values()), y=list(distribution), orientation="h", marker_color=["#9b8f83", "#c79a45", "#668b78", "#315c4b"]))
+        figure = go.Figure(go.Bar(x=list(distribution.values()), y=list(distribution), orientation="h", marker_color=["#afc9da", "#d8a94a", "#74acdf", "#18324a"]))
         figure.update_layout(height=240, margin=dict(l=10, r=10, t=10, b=20), xaxis_title="Porcentaje", showlegend=False,
                              plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
         st.plotly_chart(figure, use_container_width=True)

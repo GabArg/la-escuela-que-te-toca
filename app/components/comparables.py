@@ -69,24 +69,24 @@ def comparison_chart(row: pd.Series, peer: pd.Series) -> go.Figure | None:
         return None
     fig = go.Figure()
     for label, left, right in rows:
-        fig.add_trace(go.Scatter(x=[left, right], y=[label, label], mode="lines", line={"color": "#d8d2c7", "width": 2}, hoverinfo="skip", showlegend=False))
+        fig.add_trace(go.Scatter(x=[left, right], y=[label, label], mode="lines", line={"color": "#cdd8dc", "width": 2}, hoverinfo="skip", showlegend=False))
     fig.add_trace(go.Scatter(
         x=[x[1] for x in rows], y=[x[0] for x in rows], mode="markers+text",
         name=str(row.departamento_nombre),
-        text=[f"{x[1]:.1f}".replace(".", ",") for x in rows], textposition="top center", textfont={"size": 10, "color": "#315c4b"},
-        marker={"color": "#315c4b", "size": 12},
+        text=[f"{x[1]:.1f}".replace(".", ",") for x in rows], textposition="top center", textfont={"size": 10, "color": "#18324a"},
+        marker={"color": "#18324a", "size": 12},
     ))
     fig.add_trace(go.Scatter(
         x=[x[2] for x in rows], y=[x[0] for x in rows], mode="markers+text",
         name=str(peer.departamento_nombre),
-        text=[f"{x[2]:.1f}".replace(".", ",") for x in rows], textposition="bottom center", textfont={"size": 10, "color": "#b66a50"},
-        marker={"color": "#b66a50", "size": 12, "symbol": "diamond"},
+        text=[f"{x[2]:.1f}".replace(".", ",") for x in rows], textposition="bottom center", textfont={"size": 10, "color": "#d8a94a"},
+        marker={"color": "#d8a94a", "size": 12, "symbol": "diamond"},
     ))
     fig.update_layout(
         height=max(300, len(rows) * 75 + 80), margin=dict(l=20, r=20, t=30, b=50),
         xaxis_title="Porcentaje", legend=dict(orientation="h", y=-0.18, x=0.5, xanchor="center"),
         plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
-        xaxis=dict(gridcolor="#ede9e0", gridwidth=1), yaxis=dict(gridcolor="rgba(0,0,0,0)"),
+        xaxis=dict(gridcolor="#e3eaec", gridwidth=1), yaxis=dict(gridcolor="rgba(0,0,0,0)"),
     )
     return fig
 
@@ -112,6 +112,7 @@ def peer_card_html(peer: pd.Series) -> str:
 
 def render_comparables(profiles: pd.DataFrame, pairs: pd.DataFrame, gaps: pd.DataFrame, territory_id: str, embedded: bool = False) -> None:
     row = profile_row(profiles, territory_id)
+    st.markdown('<span class="functional-view-marker functional-view--compare" aria-hidden="true"></span>', unsafe_allow_html=True)
     if embedded:
         st.subheader("¿Con qué territorios tiene sentido compararlo?")
     else:

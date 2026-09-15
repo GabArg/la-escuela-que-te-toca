@@ -73,7 +73,12 @@ def _display_value(value: object, variable: str | None, suffix: str) -> str:
     return f"{number:.1f}{suffix}".replace(".", ",")
 
 
-def build_map(profiles: pd.DataFrame, variable_label: str, selected_id: str | None = None) -> go.Figure:
+def build_map(
+    profiles: pd.DataFrame,
+    variable_label: str,
+    selected_id: str | None = None,
+    height: int = 480,
+) -> go.Figure:
     geojson = load_geojson()
     variable, suffix, kind = MAP_VARIABLES[variable_label]
     data = profiles[["departamento_id", "departamento_nombre", "provincia_nombre"]].copy()
@@ -82,21 +87,21 @@ def build_map(profiles: pd.DataFrame, variable_label: str, selected_id: str | No
     data["display"] = [_display_value(v, variable, suffix) for v in data.value]
     fig = go.Figure()
     available = data[data.state.eq("disponible")]
-    colorscale = [[0, "#dce8e1"], [1, "#315c4b"]] if variable else [[0, "#ded9cf"], [1, "#ded9cf"]]
+    colorscale = [[0, "#93b9d0"], [1, "#18324a"]] if variable else [[0, "#cddfe7"], [1, "#cddfe7"]]
     fig.add_trace(go.Choropleth(
         geojson=geojson, featureidkey="properties.departamento_id", locations=available.departamento_id,
-        z=available.value, colorscale=colorscale, showscale=variable is not None, marker_line_color="#fffdf8", marker_line_width=.35,
+        z=available.value, colorscale=colorscale, showscale=variable is not None, marker_line_color="#f7f5ee", marker_line_width=.55,
         customdata=available[["departamento_nombre", "provincia_nombre", "display"]],
         hovertemplate="<b>%{customdata[0]}</b><br>%{customdata[1]}<br>%{customdata[2]}<extra></extra>",
         colorbar={"title": suffix.strip(), "thickness": 10, "len": .55},
     ))
-    for state, color, label in [("parcial", "#c79a45", "Cobertura parcial"), ("sin dato", "#eeeae2", "Sin dato")]:
+    for state, color, label in [("parcial", "#d8a94a", "Cobertura parcial"), ("sin dato", "#e8eceb", "Sin dato")]:
         subset = data[data.state.eq(state)]
         if subset.empty: continue
         fig.add_trace(go.Choropleth(
             geojson=geojson, featureidkey="properties.departamento_id", locations=subset.departamento_id,
             z=[1] * len(subset), colorscale=[[0, color], [1, color]], showscale=False, name=label,
-            marker_line_color="#fffdf8", marker_line_width=.35,
+            marker_line_color="#f7f5ee", marker_line_width=.55,
             customdata=subset[["departamento_nombre", "provincia_nombre", "display"]],
             hovertemplate="<b>%{customdata[0]}</b><br>%{customdata[1]}<br>" + label + "<extra></extra>",
         ))
@@ -104,7 +109,7 @@ def build_map(profiles: pd.DataFrame, variable_label: str, selected_id: str | No
         fig.add_trace(go.Choropleth(
             geojson=geojson, featureidkey="properties.departamento_id", locations=[selected_id], z=[1],
             colorscale=[[0, "rgba(0,0,0,0)"], [1, "rgba(0,0,0,0)"]], showscale=False,
-            marker_line_color="#b66a50", marker_line_width=2.5, hoverinfo="skip",
+            marker_line_color="#d8a94a", marker_line_width=3.2, hoverinfo="skip",
         ))
     is_national_view = data.provincia_nombre.nunique() > 1
     if is_national_view:
@@ -117,14 +122,19 @@ def build_map(profiles: pd.DataFrame, variable_label: str, selected_id: str | No
     else:
         # El encuadre provincial existente se conserva sin modificaciones.
         fig.update_geos(fitbounds="locations", visible=False, bgcolor="rgba(0,0,0,0)")
-    fig.update_layout(height=480, margin=dict(l=0, r=0, t=10, b=0), paper_bgcolor="rgba(0,0,0,0)", dragmode=False)
+    fig.update_layout(height=height, margin=dict(l=0, r=0, t=10, b=0), paper_bgcolor="rgba(0,0,0,0)", dragmode=False)
     return fig
 
 
-def render_map(profiles: pd.DataFrame, selected_id: str, key: str = "map_territory") -> None:
+def render_map(
+    profiles: pd.DataFrame,
+    selected_id: str,
+    key: str = "map_territory",
+    height: int = 480,
+) -> None:
     label = st.selectbox("Qué dimensión querés mirar", list(MAP_VARIABLES), key=f"{key}_variable")
     event = st.plotly_chart(
-        build_map(profiles, label, selected_id),
+        build_map(profiles, label, selected_id, height=height),
         use_container_width=True,
         on_select="rerun",
         selection_mode="points",
@@ -137,9 +147,9 @@ def render_map(profiles: pd.DataFrame, selected_id: str, key: str = "map_territo
     st.markdown(
         '<div class="map-footer">'
         '<div class="map-legend">'
-        '<span><i class="legend-swatch" style="background:#dce8e1"></i>Dato disponible</span>'
-        '<span><i class="legend-swatch" style="background:#c79a45"></i>Cobertura parcial</span>'
-        '<span><i class="legend-swatch" style="background:#eeeae2"></i>Sin dato</span>'
+        '<span><i class="legend-swatch" style="background:#93b9d0"></i>Dato disponible</span>'
+        '<span><i class="legend-swatch" style="background:#d8a94a"></i>Cobertura parcial</span>'
+        '<span><i class="legend-swatch" style="background:#e8eceb"></i>Sin dato</span>'
         '</div>'
         'Seleccioná una unidad en el mapa para sincronizar el territorio. La ausencia de dato nunca representa cero.'
         '</div>', unsafe_allow_html=True,

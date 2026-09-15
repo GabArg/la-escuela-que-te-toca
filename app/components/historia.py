@@ -55,13 +55,13 @@ def render_history(profiles: pd.DataFrame, history: pd.DataFrame, territory_id: 
     if series.empty or series.valor.notna().sum() == 0:
         st.info("No hay serie histórica identificable para este territorio e indicador.")
         return
-    figure = go.Figure(go.Scatter(x=series.anio, y=series.valor * 100, mode="lines+markers", connectgaps=False, line_color="#315c4b"))
+    figure = go.Figure(go.Scatter(x=series.anio, y=series.valor * 100, mode="lines+markers", connectgaps=False, line_color="#18324a"))
     if pd.notna(summary["mediana_historica"]):
-        figure.add_hline(y=float(summary["mediana_historica"]) * 100, line_dash="dot", line_color="#66516f", annotation_text="Mediana histórica")
-    figure.add_vrect(x0=2020, x1=2022, fillcolor="#C79A45", opacity=.22, line_width=0,
+        figure.add_hline(y=float(summary["mediana_historica"]) * 100, line_dash="dot", line_color="#456b84", annotation_text="Mediana histórica")
+    figure.add_vrect(x0=2020, x1=2022, fillcolor="#D8A94A", opacity=.22, line_width=0,
                      annotation_text="Interpretar con cautela", annotation_position="top right")
     figure.update_layout(height=430, xaxis_title="Año", yaxis_title="Porcentaje", margin=dict(l=20, r=20, t=35, b=20),
                          plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
-                         xaxis=dict(gridcolor="#ede9e0"), yaxis=dict(gridcolor="#ede9e0"))
+                         xaxis=dict(gridcolor="#e3eaec"), yaxis=dict(gridcolor="#e3eaec"))
     st.plotly_chart(figure, use_container_width=True)
     method_note("Serie descriptiva RA 2011–2025. El período 2020–2022 requiere cautela metodológica; el gráfico no atribuye causas.")
