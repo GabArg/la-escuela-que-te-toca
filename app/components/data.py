@@ -94,6 +94,17 @@ def load_history() -> pd.DataFrame:
         raise DataAvailabilityError("No se pudo preparar la serie histórica del bundle público.") from exc
 
 
+@st.cache_data(show_spinner=False)
+def load_national_history() -> pd.DataFrame:
+    from src.analysis.ra_historico import national_counts
+    try:
+        return national_counts(_read_parquet("ra_2011_2025_long.parquet"))
+    except DataAvailabilityError:
+        raise
+    except Exception as exc:
+        raise DataAvailabilityError("No se pudo preparar el agregado nacional histórico.") from exc
+
+
 def _read_parquet(name: str) -> pd.DataFrame:
     try:
         return pd.read_parquet(artifact_path(name))

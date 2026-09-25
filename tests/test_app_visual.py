@@ -14,7 +14,7 @@ from app.components.mapa import (
 )
 from app.components.perfil import profile_row
 from app.components.story_visuals import national_trajectory_svg, territory_mesh_svg, territory_silhouette_svg
-from app.components.data import load_history
+from app.components.data import load_national_history
 from app.components.mapa import load_geojson
 from app.components.ui import coverage_text, profile_sentence
 
@@ -47,8 +47,11 @@ def test_coverage_microcopy_is_plain_language():
 
 
 def test_profile_sentence_uses_only_structured_dimensions():
-    signals = pd.DataFrame({"dimension": ["Acceso", "Oferta", "Acceso"]})
-    assert profile_sentence(signals) == "Este territorio presenta señales para mirar en acceso y oferta."
+    signals = pd.DataFrame({
+        "tipo_senal": ["Señal educativa", "Señal educativa", "Señal educativa"],
+        "dimension": ["Acceso", "Oferta", "Acceso"],
+    })
+    assert profile_sentence(signals) == "Este territorio presenta señales educativas para mirar en acceso y oferta."
 
 
 def test_map_builds_all_declared_modes():
@@ -80,7 +83,7 @@ def test_province_map_keeps_location_fitbounds_for_varied_provinces():
         province = profiles.loc[profiles.provincia_nombre.eq(province_name)]
         assert not province.empty
         selected_id = str(province.iloc[-1].departamento_id)
-        figure = build_map(province, "Mapa neutro", selected_id)
+        figure = build_map(province, "Vista general de territorios", selected_id)
         assert figure.layout.geo.fitbounds == "locations"
         selected_trace = figure.data[-1]
         assert list(selected_trace.locations) == [selected_id]
@@ -106,7 +109,7 @@ def test_story_territory_mesh_uses_all_geometries_without_mutating_them():
 
 
 def test_story_trajectory_is_derived_from_the_existing_history():
-    svg = national_trajectory_svg(load_history())
+    svg = national_trajectory_svg(load_national_history())
     assert "Trayectoria nacional de la sobreedad entre 2011 y 2025" in svg
     assert "<path" in svg and svg.count("<circle") == 2
 

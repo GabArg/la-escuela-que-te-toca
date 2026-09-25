@@ -17,7 +17,15 @@ if root_path in sys.path:
 sys.path.insert(0, root_path)
 
 from app.components.comparables import render_comparables
-from app.components.data import DataAvailabilityError, load_gaps, load_history, load_pairs, load_profiles, load_signals
+from app.components.data import (
+    DataAvailabilityError,
+    load_gaps,
+    load_history,
+    load_national_history,
+    load_pairs,
+    load_profiles,
+    load_signals,
+)
 from app.components.escalas import render_argentina, render_province
 from app.components.metodologia import render_methodology
 from app.components.perfil import render_profile
@@ -39,6 +47,11 @@ EXPLORE_SCALES = ["home", "argentina", "provincia", "territorio"]
 
 def _open_territory() -> None:
     queue_explore_scale("territorio")
+    queue_navigation("Explorar")
+
+
+def _go_home() -> None:
+    queue_explore_scale("home")
     queue_navigation("Explorar")
 
 
@@ -92,6 +105,8 @@ def main() -> None:
     territory_id = render_selector(profiles)
     current = profiles.loc[profiles.departamento_id.eq(territory_id)].iloc[0]
     st.sidebar.button("Abrir ficha territorial", type="primary", on_click=_open_territory, use_container_width=True)
+    if not is_story_home:
+        st.sidebar.button("← Volver a Inicio", on_click=_go_home, use_container_width=True)
     st.sidebar.caption("Datos abiertos oficiales · Sin rankings · Lectura no causal")
 
     section = "Explorar" if is_story_home else render_main_navigation()
@@ -99,7 +114,13 @@ def main() -> None:
         if section == "Explorar":
             scale = st.session_state.explore_scale
             if scale == "home":
-                render_storytelling_home(profiles, load_pairs(), load_gaps(), load_history())
+                render_storytelling_home(
+                    profiles,
+                    load_pairs(),
+                    load_gaps(),
+                    load_history(),
+                    load_national_history(),
+                )
             elif scale == "argentina":
                 render_argentina(profiles, signals, territory_id)
             elif scale == "provincia":

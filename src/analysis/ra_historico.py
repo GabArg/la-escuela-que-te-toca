@@ -32,9 +32,36 @@ def build_indicators(long: pd.DataFrame) -> pd.DataFrame:
     return result
 
 
+def national_counts(long: pd.DataFrame) -> pd.DataFrame:
+    """Agrega todas las filas publicadas, incluso las no territorializables."""
+    required = {"anio", "variable", "valor"}
+    missing = required - set(long.columns)
+    if missing:
+        raise ValueError(f"Faltan columnas para el agregado nacional: {sorted(missing)}")
+    grouped = (
+        long.groupby(["anio", "variable"], observed=True)["valor"]
+        .sum(min_count=1)
+        .unstack("variable")
+        .reset_index()
+    )
+    grouped["proporcion_sobreedad"] = grouped["sobreedad"].div(
+        grouped["matricula_grados_comparables"].where(
+            grouped["matricula_grados_comparables"].gt(0)
+        )
+    )
+    return grouped
+
+
 def _spearman_year(group: pd.DataFrame, metric: str) -> float:
     observed = group[["anio", metric]].dropna()
     return observed["anio"].corr(observed[metric], method="spearman") if len(observed) >= 3 else np.nan
+
+
+def consecutive_annual_changes(observed: pd.DataFrame, metric: str) -> pd.Series:
+    """Cambios absolutos solo entre observaciones de años consecutivos."""
+    ordered = observed[["anio", metric]].dropna().sort_values("anio")
+    year_gap = ordered["anio"].diff()
+    return ordered[metric].diff().abs().loc[year_gap.eq(1)]
 
 
 def classify_series(indicators: pd.DataFrame) -> pd.DataFrame:
@@ -49,6 +76,7 @@ def classify_series(indicators: pd.DataFrame) -> pd.DataFrame:
             rho = _spearman_year(group, metric)
             delta = np.nan
             high_share = low_share = np.nan
+            consecutive_changes = consecutive_annual_changes(observed, metric)
             if n:
                 values = observed[metric]
                 years = observed["anio"]
@@ -61,7 +89,7 @@ def classify_series(indicators: pd.DataFrame) -> pd.DataFrame:
                 prior = observed.iloc[:-1][metric]
                 recent = observed.iloc[-1][metric]
                 iqr = prior.quantile(.75) - prior.quantile(.25)
-                median_step = observed[metric].diff().abs().median()
+                median_step = consecutive_changes.median()
                 if len(prior) >= 8 and iqr > 0 and abs(recent - prior.median()) > 2.5 * iqr:
                     classification = "Anomalía reciente"
                 elif median_step > .02:
@@ -75,7 +103,7 @@ def classify_series(indicators: pd.DataFrame) -> pd.DataFrame:
                 elif low_share >= .70:
                     classification = "Persistente bajo"
                 else:
-                    classification = "Datos insuficientes"
+                    classification = "Sin patrón definido por estas reglas"
             rows.append({
                 "provincia_nombre": identity[0], "departamento_id": identity[1],
                 "departamento_nombre": identity[2], "indicador": metric,
@@ -83,6 +111,7 @@ def classify_series(indicators: pd.DataFrame) -> pd.DataFrame:
                 "rho_spearman": rho, "cambio_mediana_ultimos_vs_primeros": delta,
                 "proporcion_anios_cuartil_alto": high_share,
                 "proporcion_anios_cuartil_bajo": low_share,
+                "n_cambios_anuales_consecutivos": len(consecutive_changes),
             })
     return pd.DataFrame(rows)
 

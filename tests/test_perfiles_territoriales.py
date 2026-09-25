@@ -155,5 +155,7 @@ def test_prioritized_signal_evidence_and_confidence(profiles):
     assert signals.evidencia.notna().all()
     assert signals.evidencia.str.contains("=", regex=False).all()
     assert set(signals.nivel_confianza) <= {"Alto", "Medio"}
-    coverage_facts = signals.senal.isin(["Cobertura documental baja", "Aprender tiene distribución parcial"])
+    coverage_facts = signals.tipo_senal.eq("Advertencia de cobertura / calidad documental")
     assert signals.loc[coverage_facts, "nivel_confianza"].eq("Alto").all()
+    assert signals.loc[coverage_facts, "dimension"].isin(["Calidad documental", "Cobertura de Aprender"]).all()
+    assert signals.loc[~coverage_facts, "tipo_senal"].eq("Señal educativa").all()

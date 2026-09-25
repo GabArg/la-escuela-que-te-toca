@@ -4,7 +4,7 @@ El proyecto documenta el uso de herramientas de inteligencia artificial para ase
 
 | Herramienta de IA | Etapa del proyecto | Finalidad | Supervisión humana | Fecha |
 |---|---|---|---|---|
-| ChatGPT / OpenAI | Ideación y discusión metodológica | Apoyar preguntas de investigación, dimensiones de análisis, alternativas conceptuales y estructura narrativa. | Revisión crítica, selección y validación humana; las definiciones se contrastaron con documentación oficial. | 2026 |
-| Codex | Desarrollo técnico | Asistir en la generación, organización y revisión de código y documentación técnica. | Revisión, pruebas y aprobación humana antes de integrar cambios. | 2026-09-12 |
+| ChatGPT / OpenAI | Ideación, revisión, investigación y auditoría | Apoyar preguntas de investigación, discusión conceptual, alternativas metodológicas, revisión de evidencia y auditoría. | Las decisiones metodológicas, la selección de fuentes y la aprobación de conclusiones permanecieron bajo responsabilidad humana. | 2026 |
+| Codex / OpenAI | Desarrollo técnico supervisado | Asistir en código, pruebas, refactorización, implementación y documentación técnica. | Revisión, pruebas y aprobación humanas antes de integrar cambios. | 2026-09-24 |
 
-No se utilizó IA generativa para alterar mapas, gráficos o imágenes finales. La IA asistió exploración y procesamiento mediante código, pero no sustituyó decisiones metodológicas, revisión de fuentes ni control humano.
+Según el proceso documentado para esta entrega, no hubo generación automática sin supervisión de visualizaciones finales ni uso de IA generativa para manipular imágenes finales. La IA asistió en exploración y procesamiento mediante código, pero no sustituyó decisiones metodológicas, revisión de fuentes ni aprobación humana.

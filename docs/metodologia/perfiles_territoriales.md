@@ -20,7 +20,7 @@ Todos los joins usan `departamento_id`, grano uno-a-uno. No se reabre ni renorma
 
 ## Trayectoria histórica
 
-Se reutilizan sin alterar las clasificaciones existentes: Persistente alto/bajo, Mejora sostenida, Deterioro sostenido, Volátil, Anomalía reciente y Datos insuficientes. Se incorporan valor 2025, mediana histórica y clasificación por indicador. No se crea una nueva etiqueta integrada.
+Se reutilizan las clasificaciones históricas auditadas: Persistente alto/bajo, Mejora sostenida, Deterioro sostenido, Volátil, Anomalía reciente, Datos insuficientes y Sin patrón definido por estas reglas. “Datos insuficientes” se reserva para series con menos de 10 años válidos; una serie suficiente que no cumple otra regla queda en la categoría residual explícita. La volatilidad usa sólo cambios entre años consecutivos. Se incorporan valor 2025, mediana histórica y clasificación por indicador. No se crea una nueva etiqueta integrada.
 
 El parquet histórico tiene grano `territorio × indicador`; no conserva sector ni ámbito. Las 95 clasificaciones `Persistente alto` documentadas históricamente son el total entre indicadores: 39 corresponden a repitencia, 56 a salidos sin pase y ninguna a sobreedad. Por eso `bandera_sobreedad_persistente_alta` evalúa 506 territorios y activa cero. No hubo pérdida en el pivot ni en el merge: la bandera es específica de sobreedad y no representa el total de persistencias adversas.
 

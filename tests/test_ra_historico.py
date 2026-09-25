@@ -3,7 +3,7 @@
 import pandas as pd
 import pytest
 
-from src.analysis.ra_historico import ADVERSE, build_indicators, classify_series
+from src.analysis.ra_historico import ADVERSE, build_indicators, classify_series, national_counts
 from src.ingestion.ra_historico import (
     COMPARABILITY_PATH, FAMILIES, MANIFEST_PATH, SPECIAL, VARIABLES, YEARS,
     build_long, load_raw, validate_long, verify_hashes,
@@ -80,6 +80,14 @@ def test_rates_are_recomputed_from_counts(long):
 
 def test_classification_uses_only_documented_categories(long):
     signals = classify_series(build_indicators(long))
-    allowed = {"Persistente alto", "Persistente bajo", "Mejora sostenida", "Deterioro sostenido", "Volátil", "Anomalía reciente", "Datos insuficientes"}
+    allowed = {"Persistente alto", "Persistente bajo", "Mejora sostenida", "Deterioro sostenido", "Volátil", "Anomalía reciente", "Datos insuficientes", "Sin patrón definido por estas reglas"}
     assert set(signals.clasificacion).issubset(allowed)
     assert set(signals.indicador) == set(ADVERSE)
+
+
+def test_national_counts_include_published_unidentified_rows(long):
+    national = national_counts(long).set_index("anio")
+    assert national.loc[2011, "sobreedad"] == pytest.approx(2_291_391)
+    assert national.loc[2011, "matricula_grados_comparables"] == pytest.approx(8_351_514)
+    assert national.loc[2025, "sobreedad"] == pytest.approx(1_026_048)
+    assert national.loc[2025, "matricula_grados_comparables"] == pytest.approx(8_672_298)

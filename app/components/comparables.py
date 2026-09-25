@@ -129,13 +129,6 @@ def render_comparables(profiles: pd.DataFrame, pairs: pd.DataFrame, gaps: pd.Dat
     if peers.empty:
         st.info("No se encontraron pares elegibles con cobertura suficiente. Esto no describe el desempeño del territorio.")
         return
-    for _, peer in peers.iterrows():
-        st.markdown(peer_card_html(peer), unsafe_allow_html=True)
-        st.button(
-            f"Contrastar con {peer.par_departamento_nombre} →",
-            key=f"choose_{territory_id}_{peer.par_departamento_id}_{comparison_type}",
-            on_click=_choose_peer, args=(peer.par_departamento_id, territory_id),
-        )
     labels = peers.set_index("par_departamento_id").apply(lambda r: f"{r.par_departamento_nombre} · {r.par_provincia_nombre}", axis=1).to_dict()
     choice_key = f"peer_choice_{territory_id}"
     if st.session_state.get(choice_key) not in labels:
@@ -143,7 +136,7 @@ def render_comparables(profiles: pd.DataFrame, pairs: pd.DataFrame, gaps: pd.Dat
     peer_id = st.session_state[choice_key]
     payload = comparison_payload(gaps, territory_id, peer_id, comparison_type)
     peer_profile = profile_row(profiles, peer_id)
-    st.markdown('<div class="chapter-break"><span>Contraste</span></div>', unsafe_allow_html=True)
+    st.markdown('<div class="chapter-break"><span>Contraste seleccionado</span></div>', unsafe_allow_html=True)
     st.subheader(f"{row.departamento_nombre} ↔ {peer_profile.departamento_nombre}")
     st.markdown('<p class="lede">Si estos territorios se parecen estructuralmente, ¿qué diferencias educativas aparecen?</p>', unsafe_allow_html=True)
     if payload is None:
@@ -153,9 +146,21 @@ def render_comparables(profiles: pd.DataFrame, pairs: pd.DataFrame, gaps: pd.Dat
     st.write("**Condiciones más similares:** " + ", ".join(_readable(v) for v in payload["similares"]))
     st.write("**Diferencias estructurales principales:** " + ", ".join(_readable(v) for v in payload["diferencias"]))
     st.markdown("#### Dónde cambian los resultados")
-    st.caption("Asistencia: Censo 2022 · Trayectoria: RA 2025 · Aprendizaje: Aprender 2024. Las brechas absolutas no indican ganador ni explican causas.")
+    st.caption("Asistencia: Censo 2022 · Sobreedad y repetición: RA 2025 · Salidos sin pase: ciclo 2024 informado en RA 2025 · Aprendizaje: Aprender 2024. Las diferencias no indican ganador ni explican causas.")
     figure = comparison_chart(row, peer_profile)
     if figure is not None:
         st.plotly_chart(figure, use_container_width=True)
-    metric_grid([(result, format_value(value, "number") + " pp" if pd.notna(value) else "Sin comparación", "Brecha absoluta procesada") for result, value in payload["brechas"].items()])
+    metric_grid([(result, format_value(value, "number") + " pp" if pd.notna(value) else "Sin comparación", "Diferencia entre territorios") for result, value in payload["brechas"].items()])
     method_note("Pregunta para investigar: ¿qué factores no observados podrían acompañar estas diferencias? La comparación no identifica causas ni evalúa gestiones.")
+    alternatives = peers.loc[~peers.par_departamento_id.eq(peer_id)]
+    if not alternatives.empty:
+        st.markdown('<div class="chapter-break"><span>Alternativas</span></div>', unsafe_allow_html=True)
+        st.subheader("Otros territorios comparables")
+        for _, peer in alternatives.iterrows():
+            st.markdown(peer_card_html(peer), unsafe_allow_html=True)
+            st.button(
+                f"Contrastar con {peer.par_departamento_nombre} →",
+                key=f"choose_{territory_id}_{peer.par_departamento_id}_{comparison_type}",
+                on_click=_choose_peer,
+                args=(peer.par_departamento_id, territory_id),
+            )

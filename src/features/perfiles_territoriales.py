@@ -230,13 +230,13 @@ def build_profiles() -> pd.DataFrame:
 
 
 SIGNAL_RULES = [
-    ("bandera_cobertura_dato_baja", 1, "Calidad del dato", "Cobertura documental baja"),
-    ("bandera_dato_aprender_parcial", 2, "Aprendizaje", "Aprender tiene distribución parcial"),
-    ("bandera_deterioro_sostenido_trayectoria", 3, "Trayectoria", "Deterioro histórico sostenido"),
-    ("bandera_sobreedad_persistente_alta", 4, "Trayectoria", "Sobreedad persistentemente alta"),
-    ("bandera_asistencia_15_17_baja_relativa", 5, "Acceso / asistencia", "Asistencia 15–17 relativamente baja"),
-    ("bandera_baja_oferta_localizaciones_relativa", 6, "Oferta", "Baja oferta relativa de localizaciones"),
-    ("bandera_vulnerabilidad_habitacional_relativa", 7, "Contexto", "Rancho/casilla relativamente alto"),
+    ("bandera_cobertura_dato_baja", 1, "Advertencia de cobertura / calidad documental", "Calidad documental", "Cobertura documental baja"),
+    ("bandera_dato_aprender_parcial", 2, "Advertencia de cobertura / calidad documental", "Cobertura de Aprender", "Aprender tiene cobertura parcial"),
+    ("bandera_deterioro_sostenido_trayectoria", 3, "Señal educativa", "Trayectoria", "Deterioro histórico sostenido"),
+    ("bandera_sobreedad_persistente_alta", 4, "Señal educativa", "Trayectoria", "Sobreedad persistentemente alta"),
+    ("bandera_asistencia_15_17_baja_relativa", 5, "Señal educativa", "Acceso / asistencia", "Asistencia 15–17 relativamente baja"),
+    ("bandera_baja_oferta_localizaciones_relativa", 6, "Señal educativa", "Oferta", "Baja oferta relativa de localizaciones"),
+    ("bandera_vulnerabilidad_habitacional_relativa", 7, "Señal educativa", "Contexto", "Rancho/casilla relativamente alto"),
 ]
 
 
@@ -267,12 +267,13 @@ def prioritized_signals(profiles: pd.DataFrame) -> pd.DataFrame:
         raise ValueError(f"Bandera sin evidencia definida: {flag}")
 
     rows = []
-    for flag, order, dimension, label in SIGNAL_RULES:
+    for flag, order, signal_type, dimension, label in SIGNAL_RULES:
         for index in profiles.index[profiles[flag].fillna(False)]:
             row = profiles.loc[index]
             rows.append({"departamento_id": row.departamento_id, "provincia_nombre": row.provincia_nombre,
                          "departamento_nombre": row.departamento_nombre, "orden_regla": order,
-                         "dimension": dimension, "senal": label, "evidencia": evidence(row, flag),
+                         "tipo_senal": signal_type, "dimension": dimension,
+                         "senal": label, "evidencia": evidence(row, flag),
                          "nivel_confianza": "Alto" if flag in {"bandera_cobertura_dato_baja", "bandera_dato_aprender_parcial"} else "Medio"})
     signals = pd.DataFrame(rows)
     if signals.empty:

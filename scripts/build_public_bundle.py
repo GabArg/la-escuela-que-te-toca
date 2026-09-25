@@ -15,7 +15,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = ROOT / "data" / "processed"
 DEFAULT_TARGET = ROOT / "data" / "public"
-BUNDLE_VERSION = "2026.09.13.1"
+BUNDLE_VERSION = "2026.09.24.1"
 
 ARTIFACTS: dict[str, dict[str, Any]] = {
     "perfiles_territoriales.parquet": {
@@ -23,7 +23,7 @@ ARTIFACTS: dict[str, dict[str, Any]] = {
         "logical_source": "Perfil territorial integrado",
     },
     "senales_prioritarias_perfiles.parquet": {
-        "required": ["departamento_id", "prioridad", "dimension", "senal", "evidencia"],
+        "required": ["departamento_id", "prioridad", "tipo_senal", "dimension", "senal", "evidencia"],
         "logical_source": "Señales prioritarias auditadas",
     },
     "pares_comparables.parquet": {

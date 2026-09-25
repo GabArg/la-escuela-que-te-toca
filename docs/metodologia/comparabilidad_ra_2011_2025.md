@@ -53,9 +53,10 @@ En 2011–2012, CABA se publica mediante distritos escolares romanos I–XXI, qu
 
 Las reglas se aplican por indicador adverso —repitentes/matrícula comparable, sobreedad/matrícula comparable y salidos sin pase/matrícula inicial—, nunca se combinan en un score:
 
-- **Datos insuficientes:** menos de 10 años válidos o ninguna otra regla robusta.
+- **Datos insuficientes:** menos de 10 años válidos.
+- **Sin patrón definido por estas reglas:** al menos 10 años válidos, pero ninguna regla posterior se activa.
 - **Anomalía reciente:** último valor a más de 2,5 rangos intercuartílicos de la mediana previa, con al menos 8 observaciones previas.
-- **Volátil:** mediana del cambio interanual absoluto superior a 2 puntos porcentuales.
+- **Volátil:** mediana del cambio anual absoluto superior a 2 puntos porcentuales, calculada solo entre observaciones de años consecutivos. Los saltos entre observaciones separadas por más de un año no se tratan como interanuales.
 - **Mejora sostenida:** Spearman año–indicador <= −0,70 y descenso de al menos 2 puntos entre la mediana de los primeros y últimos tres años.
 - **Deterioro sostenido:** Spearman >= 0,70 y aumento de al menos 2 puntos.
 - **Persistente alto/bajo:** al menos 70% de los años en el cuartil superior/inferior de la distribución anual.

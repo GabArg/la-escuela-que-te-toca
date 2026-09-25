@@ -7,3 +7,7 @@ font = "sans serif"
 
 [browser]
 gatherUsageStats = false
+
+[client]
+# Reduce opciones de plataforma no necesarias para la entrega pública.
+toolbarMode = "minimal"

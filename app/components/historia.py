@@ -45,9 +45,10 @@ def render_history(profiles: pd.DataFrame, history: pd.DataFrame, territory_id: 
     series = history_series(history, territory_id, indicator)
     summary = history_summary(row, indicator)
     classification = summary["clasificacion"] if pd.notna(summary["clasificacion"]) else "Sin clasificación"
+    years_text = f'{int(summary["n_anios"])} años con datos' if pd.notna(summary["n_anios"]) else "Sin serie histórica"
     metric_grid([
         ("Valor 2025", format_value(summary["valor_2025"], "percent_ratio"), "Relevamiento Anual"),
-        ("Mediana histórica", format_value(summary["mediana_historica"], "percent_ratio"), f'{summary["n_anios"]} años observados'),
+        ("Mediana histórica", format_value(summary["mediana_historica"], "percent_ratio"), years_text),
     ])
     st.markdown(f'<div class="metric-item" style="max-width:360px"><div class="metric-label">Patrón histórico</div>'
                 f'<div class="metric-value-text">{escape(classification)}</div>'

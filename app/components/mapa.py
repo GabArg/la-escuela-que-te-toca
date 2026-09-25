@@ -11,7 +11,7 @@ import streamlit as st
 from app.components.data import artifact_path
 
 MAP_VARIABLES = {
-    "Mapa neutro": (None, "", "descriptivo"),
+    "Vista general de territorios": (None, "", "descriptivo"),
     "Asistencia 15–17": ("porcentaje_asistencia_15_17_2022", "%", "acceso"),
     "Sobreedad": ("sobreedad_2025", "%", "trayectoria"),
     "Oferta relativa": ("localizaciones_por_1000_poblacion_escolar_2022", " por 1.000", "oferta"),
@@ -67,7 +67,7 @@ def queue_map_selection(state: Any, clicked: str | None, selected_id: str, valid
 
 
 def _display_value(value: object, variable: str | None, suffix: str) -> str:
-    if variable is None: return "Mapa neutro"
+    if variable is None: return "Territorio identificable"
     if pd.isna(value): return "Sin dato"
     number = float(value) * (100 if variable == "sobreedad_2025" else 1)
     return f"{number:.1f}{suffix}".replace(".", ",")
@@ -132,7 +132,8 @@ def render_map(
     key: str = "map_territory",
     height: int = 480,
 ) -> None:
-    label = st.selectbox("Qué dimensión querés mirar", list(MAP_VARIABLES), key=f"{key}_variable")
+    st.caption("Pregunta inicial: ¿cómo se distribuyen las diferencias territoriales? Elegí una variable para explorarlas.")
+    label = st.selectbox("Variable del mapa", list(MAP_VARIABLES), key=f"{key}_variable")
     event = st.plotly_chart(
         build_map(profiles, label, selected_id, height=height),
         use_container_width=True,

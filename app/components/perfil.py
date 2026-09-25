@@ -107,8 +107,22 @@ def render_profile(
     if selected.empty:
         st.write("No hay señales prioritarias activadas con los datos disponibles.")
     else:
-        for _, signal in selected.iterrows():
-            signal_card(signal.dimension, signal.senal, signal.evidencia, signal.nivel_confianza)
+        for signal_type, heading in (
+            ("Señal educativa", "Señales educativas"),
+            ("Advertencia de cobertura / calidad documental", "Advertencias de cobertura / calidad documental"),
+        ):
+            group = selected.loc[selected.tipo_senal.eq(signal_type)]
+            if group.empty:
+                continue
+            st.markdown(f"#### {heading}")
+            for _, signal in group.iterrows():
+                signal_card(
+                    signal.dimension,
+                    signal.senal,
+                    signal.evidencia,
+                    signal.nivel_confianza,
+                    signal.tipo_senal,
+                )
 
     if history is not None:
         st.markdown('<div class="chapter-break"><span>Entender</span></div>', unsafe_allow_html=True)
@@ -125,7 +139,11 @@ def render_profile(
 
     st.markdown('<div class="section-rule"></div>', unsafe_allow_html=True)
     st.subheader("¿Qué muestran las trayectorias?")
-    metric_grid([(label, format_value(row.get(variable), "percent_ratio"), "2025 · Relevamiento Anual") for label, variable in zip(["Sobreedad", "Repetición", "Salidos sin pase"], ["sobreedad_2025", "repeticion_2025", "salidos_sin_pase_2025"])])
+    metric_grid([
+        ("Sobreedad", format_value(row.get("sobreedad_2025"), "percent_ratio"), "2025 · Relevamiento Anual"),
+        ("Repetición", format_value(row.get("repeticion_2025"), "percent_ratio"), "2025 · Relevamiento Anual"),
+        ("Salidos sin pase", format_value(row.get("salidos_sin_pase_2025"), "percent_ratio"), "Ciclo 2024 · informado en RA 2025"),
+    ])
     with st.expander("Comparar sobreedad con medianas"):
         variable = "sobreedad_2025"
         values = [row.get(variable), row.get(f"{variable}__mediana_provincial"), row.get(f"{variable}__mediana_nacional")]

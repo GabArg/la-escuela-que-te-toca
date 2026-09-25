@@ -32,9 +32,35 @@ def test_non_finite_values_are_never_exposed():
 
 
 def test_signal_evidence_removes_internal_tokens():
-    text = readable_evidence("valor=80.4680; umbral_P25=83.3540")
+    text = readable_evidence(
+        "valor=80.4680; umbral_P25=83.3540",
+        "Asistencia 15–17 relativamente baja",
+    )
     assert "P25" not in text and "valor=" not in text
-    assert "primer cuartil nacional" in text
+    assert text == (
+        "Asistencia 15–17: 80,5%\n"
+        "Referencia: el umbral del 25% de territorios con valores más bajos es 83,4%"
+    )
+
+
+def test_signal_evidence_uses_high_quartile_language_for_housing():
+    assert readable_evidence(
+        "valor=4.3178; umbral_P75=4.1905",
+        "Rancho/casilla relativamente alto",
+    ) == (
+        "Rancho/casilla: 4,3%\n"
+        "Referencia: el umbral del 25% de territorios con valores más altos es 4,2%"
+    )
+
+
+def test_signal_evidence_names_offer_unit_without_turning_it_into_a_percentage():
+    assert readable_evidence(
+        "valor=4.4514; umbral_P25=6.2563",
+        "Baja oferta relativa de localizaciones",
+    ) == (
+        "Localizaciones por cada 1.000 personas en edad escolar: 4,5\n"
+        "Referencia: el umbral del 25% de territorios con valores más bajos es 6,3"
+    )
 
 
 def test_all_views_render_without_exceptions():
@@ -95,13 +121,13 @@ def test_storytelling_ctas_reuse_deferred_explore_navigation():
     app.run()
     app.button(key="story_intro_territorio").click().run()
     assert app.session_state["nav_section"] == "Explorar"
-    assert app.session_state["explore_scale"] == "territorio"
+    assert app.session_state["explore_scale"] == "provincia"
 
     app = AppTest.from_file("app/app.py", default_timeout=40)
     app.run()
     assert app.button(key="story_explore_argentina").label == "Explorar el país →"
     assert app.button(key="story_explore_provincia").label == "Elegir provincia →"
-    assert app.button(key="story_explore_territorio").label == "Buscar territorio →"
+    assert app.button(key="story_explore_territorio").label == "Elegir territorio →"
     app.button(key="story_explore_provincia").click().run()
     assert app.session_state["nav_section"] == "Explorar"
     assert app.session_state["explore_scale"] == "provincia"

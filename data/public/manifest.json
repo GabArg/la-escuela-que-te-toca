@@ -1,13 +1,13 @@
 {
-  "bundle_version": "2026.09.13.1",
-  "generated_at": "2026-09-13T13:38:24.101545+00:00",
-  "git_commit": "616801caf889aec6f6942c7228b974eafc6bdf5d",
+  "bundle_version": "2026.09.24.1",
+  "generated_at": "2026-09-24T21:29:16.135257+00:00",
+  "git_commit": "6d406d45b008d64cf2980afd0140d99b8b39e979",
   "notice": "Artefactos derivados exclusivamente de datos públicos oficiales; no son fuentes raw.",
   "files": [
     {
       "name": "perfiles_territoriales.parquet",
-      "sha256": "01002c4dcbcbb2fe552a35b39c414f0437950d6b2ef686886eab1e70519a405e",
-      "size_bytes": 332430,
+      "sha256": "08a35b151fababcf46a4f1af382d6fd69e8f9d3e0d1d901229db32421905585e",
+      "size_bytes": 332560,
       "rows": 529,
       "columns": 119,
       "column_names": [
@@ -135,14 +135,15 @@
     },
     {
       "name": "senales_prioritarias_perfiles.parquet",
-      "sha256": "6c086fc4a7dfe0b1899d999bebc722c6958b97125a2dfe934d6d18fbd2efbee3",
-      "size_bytes": 19885,
+      "sha256": "683be548f4f3fbeb2ffc33e78707df6db17c9ba6fb342d09ff20802471271f60",
+      "size_bytes": 20683,
       "rows": 751,
-      "columns": 8,
+      "columns": 9,
       "column_names": [
         "departamento_id",
         "provincia_nombre",
         "departamento_nombre",
+        "tipo_senal",
         "dimension",
         "senal",
         "evidencia",

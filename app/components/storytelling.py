@@ -14,12 +14,15 @@ GUIDED_ORIGIN_ID = "34063"
 GUIDED_PEER_ID = "86140"
 
 STRUCTURAL_STORY_VARIABLES = [
-    ("Territorio", "superficie_km2", "Superficie", "km²", 0),
-    ("Territorio", "densidad_poblacional", "Densidad", "hab./km²", 1),
-    ("Contexto", "porcentaje_hogares_internet_2022", "Hogares con internet", "%", 1),
-    ("Oferta", "proporcion_cue_rurales_2022", "Oferta rural", "%", 1),
-    ("Oferta", "relacion_cue_secundaria_primaria_2022", "Relación secundaria/primaria", "", 2),
-    ("Oferta", "localizaciones_por_1000_poblacion_escolar_2022", "Localizaciones por población escolar", "por 1.000", 1),
+    ("Se parecen en estas dimensiones", "superficie_km2", "Superficie", "km²", 0),
+    ("Se parecen en estas dimensiones", "densidad_poblacional", "Densidad", "hab./km²", 1),
+    ("Se parecen en estas dimensiones", "porcentaje_hogares_internet_2022", "Hogares con internet", "%", 1),
+    ("Se parecen en estas dimensiones", "proporcion_cue_rurales_2022", "Oferta rural", "%", 1),
+    ("Se parecen en estas dimensiones", "relacion_cue_secundaria_primaria_2022", "Relación secundaria/primaria", "", 2),
+    ("Se parecen en estas dimensiones", "localizaciones_por_1000_poblacion_escolar_2022", "Localizaciones por población escolar", "por 1.000", 1),
+    ("También difieren en estas otras", "porcentaje_hogares_agua_red_publica_2022", "Hogares con agua de red", "%", 1),
+    ("También difieren en estas otras", "porcentaje_viviendas_rancho_casilla_2022", "Viviendas rancho/casilla", "%", 1),
+    ("También difieren en estas otras", "localizaciones_por_100_km2_2022", "Localizaciones por superficie", "por 100 km²", 1),
 ]
 
 
@@ -28,15 +31,31 @@ def _go(scale: str) -> None:
     queue_navigation("Explorar")
 
 
-def national_overage_story(history: pd.DataFrame) -> dict[str, float]:
-    """Calcula la proporción nacional desde conteos comparables del RA."""
+def _open_guided_profile() -> None:
+    from app.components.territorio import queue_territory
+    queue_territory(GUIDED_ORIGIN_ID)
+    queue_explore_scale("territorio")
+    queue_navigation("Explorar")
+
+
+def _open_guided_comparison() -> None:
+    from app.components.territorio import queue_territory
+    queue_territory(GUIDED_ORIGIN_ID)
+    st.session_state[f"peer_choice_{GUIDED_ORIGIN_ID}"] = GUIDED_PEER_ID
+    queue_navigation("Comparar")
+
+
+def national_overage_story(national_history: pd.DataFrame) -> dict[str, float]:
+    """Lee el agregado de todas las filas RA publicadas del universo comparable."""
     values: dict[str, float] = {}
     for year in (2011, 2025):
-        rows = history.loc[history.anio.eq(year)]
-        denominator = rows.matricula_grados_comparables.sum(min_count=1)
+        rows = national_history.loc[national_history.anio.eq(year)]
+        if len(rows) != 1:
+            raise ValueError(f"No hay un único agregado nacional comparable para {year}.")
+        denominator = rows.iloc[0].matricula_grados_comparables
         if pd.isna(denominator) or denominator <= 0:
             raise ValueError(f"No hay denominador nacional comparable para {year}.")
-        values[str(year)] = float(rows.sobreedad.sum(min_count=1) / denominator * 100)
+        values[str(year)] = float(rows.iloc[0].sobreedad / denominator * 100)
     return values
 
 
@@ -97,6 +116,7 @@ def guided_case_data(profiles: pd.DataFrame, pairs: pd.DataFrame, gaps: pd.DataF
         "peer_dropout": float(peer.salidos_sin_pase_2025) * 100,
         "dropout_gap": float(gap.brecha_salidos_sin_pase_pp),
         "dropout_year": 2025,
+        "dropout_period": 2024,
         "dropout_source": "Relevamiento Anual 2025",
         "origin_attendance": float(origin.porcentaje_asistencia_15_17_2022),
         "attendance_year": 2022,
@@ -125,20 +145,21 @@ def render_story_intro() -> None:
         )
         primary, secondary, _ = st.columns([1.15, 1.15, 2.7])
         primary.button("Explorar Argentina", key="story_intro_argentina", type="primary", on_click=_go, args=("argentina",), use_container_width=True)
-        secondary.button("Buscar mi territorio", key="story_intro_territorio", on_click=_go, args=("territorio",), use_container_width=True)
+        secondary.button("Elegir provincia y territorio", key="story_intro_territorio", on_click=_go, args=("provincia",), use_container_width=True)
 
 
-def render_average_story(profiles: pd.DataFrame, history: pd.DataFrame) -> None:
-    overage = national_overage_story(history)
+def render_average_story(profiles: pd.DataFrame, national_history: pd.DataFrame) -> None:
+    overage = national_overage_story(national_history)
     mesh = territory_mesh_svg(load_geojson(), css_class="story-count-map")
-    trajectory = national_trajectory_svg(history)
+    trajectory = national_trajectory_svg(national_history)
     st.markdown(
         '<section class="story-section story-averages"><p class="story-number">02</p>'
         '<h2>Lo que un promedio no muestra</h2>'
         '<article class="average-scene average-time"><p class="scene-label">Una trayectoria nacional</p>'
         f'<strong>{_number(overage["2011"])}% <i>→</i> {_number(overage["2025"])}%</strong>{trajectory}'
         '<div class="trajectory-years"><span>2011</span><span>2025</span></div>'
-        '<p>La sobreedad cayó fuertemente entre 2011 y 2025. Pero la mejora nacional no describe por igual '
+        '<p>En el universo comparable publicado, la sobreedad cayó fuertemente entre 2011 y 2025. '
+        'El agregado nacional no describe por igual '
         'la trayectoria de todos los territorios.</p><small>Relevamiento Anual · 2011–2025</small></article>'
         '<article class="average-scene average-territories"><div class="territory-count">'
         f'<strong>{len(profiles)}</strong><span>territorios</span><p>Las diferencias internas de una provincia pueden '
@@ -200,7 +221,8 @@ def render_guided_case(case: dict[str, object]) -> None:
         f'<span><i></i>{peer_name}</span><p>Cada comparación usa su propia escala y parte de cero.</p></div>'
         f'<div class="case-micros">{micro_comparisons}</div></div>'
         '<p class="story-method">La comparación utiliza características estructurales. '
-        'Los resultados educativos no intervienen en la selección de pares.</p></section>'
+        'Los resultados educativos no intervienen en la selección de pares. '
+        'La similitud estructural no implica equivalencia total.</p></section>'
         '<section class="story-section story-contrast"><p class="story-number">04</p>'
         '<h2>Y, sin embargo,<br>aparecen diferencias.</h2>'
         f'<div class="contrast-shapes" aria-hidden="true">{origin_shape}{peer_shape}</div>'
@@ -210,19 +232,23 @@ def render_guided_case(case: dict[str, object]) -> None:
         f'<div class="dumbbell-axis"><i style="left:{peer_position:.2f}%"></i><i style="left:{origin_position:.2f}%"></i></div>'
         f'<div class="dumbbell-labels"><span><b>{peer_name}</b><strong>{_number(peer_dropout, 2)}%</strong></span>'
         f'<span><b>{origin_name}</b><strong>{_number(origin_dropout, 2)}%</strong></span></div></div>'
-        f'<p class="story-source">Salidos sin pase · Fuente: {case["dropout_source"]}</p>'
+        f'<p class="story-source">Salidos sin pase · ciclo lectivo {case["dropout_period"]} · informado en {case["dropout_source"]}</p>'
         f'<div class="story-context"><strong>{_number(float(case["origin_attendance"]), 1)}%</strong>'
         f'<p>Asistencia entre 15 y 17 años<br><span>{origin_name} · Fuente: {case["attendance_source"]}</span></p></div>'
         '<div class="story-caution"><p>“Salidos sin pase” no equivale automáticamente a abandono escolar.</p>'
         '<p>La diferencia observada es descriptiva y no implica causalidad.</p></div></section>',
         unsafe_allow_html=True,
     )
+    primary, secondary, _ = st.columns([1.2, 1.5, 2.3])
+    primary.button("Abrir Ramón Lista", key="story_case_profile", on_click=_open_guided_profile, use_container_width=True)
+    secondary.button("Ver contraste con Quebrachos", key="story_case_compare", on_click=_open_guided_comparison, use_container_width=True)
 
 
 def render_core_question() -> None:
     st.markdown(
         '<section class="story-core"><span class="story-number">05</span><p>¿Qué explica esa diferencia?</p>'
-        '<h2>Los datos no responden esa pregunta.<br><em>Ayudan a saber dónde hacerla.</em></h2>'
+        '<h2>Estos datos no bastan para explicar la diferencia.<br>'
+        '<em>Sí ayudan a decidir qué investigar.</em></h2>'
         '<small>La herramienta no clasifica territorios como mejores o peores. Detecta contrastes, muestra '
         'contexto y ayuda a formular preguntas de investigación.</small></section>', unsafe_allow_html=True,
     )
@@ -240,14 +266,15 @@ def render_explore_cta() -> None:
             '</div></section>', unsafe_allow_html=True,
         )
         columns = st.columns(3)
-        for column, label, scale in zip(
+        for column, label, key_suffix, scale in zip(
             columns,
-            ["Explorar el país →", "Elegir provincia →", "Buscar territorio →"],
+            ["Explorar el país →", "Elegir provincia →", "Elegir territorio →"],
             ["argentina", "provincia", "territorio"],
+            ["argentina", "provincia", "provincia"],
         ):
             column.button(
                 label,
-                key=f"story_explore_{scale}",
+                key=f"story_explore_{key_suffix}",
                 on_click=_go,
                 args=(scale,),
                 use_container_width=True,
@@ -259,10 +286,11 @@ def render_storytelling_home(
     pairs: pd.DataFrame,
     gaps: pd.DataFrame,
     history: pd.DataFrame,
+    national_history: pd.DataFrame,
 ) -> None:
     case = guided_case_data(profiles, pairs, gaps)
     render_story_intro()
-    render_average_story(profiles, history)
+    render_average_story(profiles, national_history)
     render_guided_case(case)
     render_core_question()
     render_explore_cta()

@@ -2,7 +2,7 @@
 
 ## Historia principal: Ramón Lista y Quebrachos
 
-Funciona porque atraviesa todo el diferencial: Ramón Lista combina asistencia 15–17 de 76,78%, sobreedad 2025 de 41,45% y una clasificación histórica de mejora sostenida. “Mejora” no equivale a nivel actual bajo. El motor propone Quebrachos como par de comparabilidad media y registra 9,15 puntos porcentuales de brecha en salidos sin pase.
+Funciona porque atraviesa todo el diferencial: Ramón Lista combina asistencia 15–17 de 76,8%, sobreedad 2025 de 41,5% y una clasificación histórica de mejora sostenida. “Mejora” no equivale a nivel actual bajo. El motor propone Quebrachos como par de comparabilidad media y registra una diferencia de 9,15 puntos porcentuales en salidos sin pase.
 
 Pantallas: mapa → Perfil → Historia/sobreedad → Comparables → contraste con Quebrachos → Metodología.
 

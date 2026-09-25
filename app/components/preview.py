@@ -21,7 +21,7 @@ def territory_preview_data(profiles: pd.DataFrame, signals: pd.DataFrame, territ
         "provincia": row.provincia_nombre,
         "cobertura": row.calidad_total_del_perfil,
         "cantidad_senales": int(signals.departamento_id.astype(str).eq(str(territory_id)).sum()),
-        "senales": selected[["dimension", "senal", "evidencia"]].to_dict("records"),
+        "senales": selected[["tipo_senal", "dimension", "senal", "evidencia"]].to_dict("records"),
     }
 
 
@@ -43,9 +43,9 @@ def territory_preview(profiles: pd.DataFrame, signals: pd.DataFrame, territory_i
     preview = territory_preview_data(profiles, signals, territory_id)
     count_text = signal_count_text(int(preview["cantidad_senales"]))
     details = "".join(
-        f'<div class="preview-signal"><span>{escape(str(item["dimension"]))}</span>'
+        f'<div class="preview-signal"><span>{escape(str(item["tipo_senal"]))} · {escape(str(item["dimension"]))}</span>'
         f'<strong>{escape(str(item["senal"]))}</strong>'
-        f'<small>{escape(readable_evidence(item["evidencia"]))}</small></div>'
+        f'<small>{escape(readable_evidence(item["evidencia"], item["senal"]))}</small></div>'
         for item in preview["senales"]
     )
     with st.container(key=f"territory_preview_{key}"):

@@ -53,20 +53,27 @@ def render_home() -> None:
 
 def _signal_summary(signals: pd.DataFrame, province: str | None = None) -> None:
     data = signals if province is None else signals[signals.provincia_nombre.eq(province)]
-    counts = data.groupby("dimension", observed=True).size().sort_index()
-    if counts.empty:
+    if data.empty:
         st.write("No hay señales identificables para esta selección.")
         return
     st.markdown("#### Señales que orientan la investigación")
-    st.caption("Cantidad de señales auditadas por dimensión. No expresa gravedad ni calidad.")
-    figure = go.Figure(go.Bar(
-        x=counts.values, y=counts.index, orientation="h", marker_color="#18324a",
-        text=counts.values, textposition="outside",
-    ))
-    figure.update_layout(height=max(230, len(counts) * 46), margin=dict(l=10, r=40, t=10, b=20),
-                         xaxis_title="Señales existentes", plot_bgcolor="rgba(0,0,0,0)",
-                         paper_bgcolor="rgba(0,0,0,0)", showlegend=False)
-    st.plotly_chart(figure, use_container_width=True)
+    st.caption("Cantidad de hallazgos auditados por dimensión. No expresa gravedad ni desempeño.")
+    for signal_type, color in (
+        ("Señal educativa", "#18324a"),
+        ("Advertencia de cobertura / calidad documental", "#596b73"),
+    ):
+        counts = data.loc[data.tipo_senal.eq(signal_type)].groupby("dimension", observed=True).size().sort_index()
+        if counts.empty:
+            continue
+        st.markdown(f"##### {signal_type}")
+        figure = go.Figure(go.Bar(
+            x=counts.values, y=counts.index, orientation="h", marker_color=color,
+            text=counts.values, textposition="outside",
+        ))
+        figure.update_layout(height=max(180, len(counts) * 46), margin=dict(l=10, r=40, t=10, b=20),
+                             xaxis_title="Hallazgos", plot_bgcolor="rgba(0,0,0,0)",
+                             paper_bgcolor="rgba(0,0,0,0)", showlegend=False)
+        st.plotly_chart(figure, use_container_width=True)
 
 
 def _map_with_preview(

@@ -119,10 +119,10 @@ def territory_silhouette_svg(
     )
 
 
-def national_trajectory_svg(history: pd.DataFrame) -> str:
-    annual = history.groupby("anio", observed=True)[["sobreedad", "matricula_grados_comparables"]].sum(min_count=1)
+def national_trajectory_svg(national_history: pd.DataFrame) -> str:
+    annual = national_history.set_index("anio").sort_index().copy()
     annual["value"] = annual.sobreedad / annual.matricula_grados_comparables * 100
-    annual = annual.loc[annual.value.notna()].sort_index()
+    annual = annual.loc[annual.value.notna()]
     if annual.empty:
         return ""
     width, height, pad = 720.0, 150.0, 8.0

@@ -5,7 +5,7 @@ from app.components.comparables import comparison_payload, peer_card_html, peer_
 from app.components.historia import history_series, history_summary
 from app.components.perfil import format_value, learning_distribution, profile_row, signal_rows
 from app.components.preview import signal_count_text, territory_preview_data
-from app.components.senales import filter_signals
+from app.components.senales import filter_signals, visible_signal_rows
 from app.components.storytelling import guided_case_data, national_overage_story
 from app.components.territorio import consume_pending_navigation, territory_options
 
@@ -91,7 +91,7 @@ def test_comparison_payload_uses_processed_gaps():
 
 
 def test_signal_filters_are_nonordinal(signals):
-    filtered = filter_signals(signals, "San Juan", "Oferta", "Baja oferta relativa de localizaciones")
+    filtered = filter_signals(signals, "San Juan", "Oferta", "Señal educativa")
     assert not filtered.empty
     assert filtered.provincia_nombre.eq("San Juan").all()
     assert filtered.departamento_nombre.tolist() == sorted(filtered.departamento_nombre.tolist())
@@ -137,6 +137,7 @@ def test_map_preview_prioritizes_at_most_two_signals(profiles):
         {
             "departamento_id": [territory_id] * 3,
             "prioridad": [3, 1, 2],
+            "tipo_senal": ["Señal educativa"] * 3,
             "dimension": ["Contexto", "Trayectoria", "Oferta"],
             "senal": ["Tercera", "Primera", "Segunda"],
             "evidencia": ["c", "a", "b"],
@@ -165,11 +166,11 @@ def test_comparable_card_keeps_scan_hierarchy_and_cta_data():
 
 
 def test_storytelling_national_overage_uses_existing_counts():
-    from app.components.data import load_history
+    from app.components.data import load_national_history
 
-    values = national_overage_story(load_history())
-    assert values["2011"] == pytest.approx(27.9726456585)
-    assert values["2025"] == pytest.approx(11.8807598612)
+    values = national_overage_story(load_national_history())
+    assert values["2011"] == pytest.approx(27.4368336089)
+    assert values["2025"] == pytest.approx(11.8313277519)
 
 
 def test_guided_case_resolves_existing_ramón_lista_quebrachos_pair(profiles):
@@ -180,11 +181,18 @@ def test_guided_case_resolves_existing_ramón_lista_quebrachos_pair(profiles):
     assert case["dropout_gap"] == pytest.approx(9.150448)
     assert case["origin_attendance"] == pytest.approx(76.780186)
     assert case["dropout_year"] == 2025
+    assert case["dropout_period"] == 2024
     assert case["attendance_year"] == 2022
     assert case["dropout_source"] == "Relevamiento Anual 2025"
     assert case["attendance_source"] == "Censo 2022"
     assert all(case["dimensions"].values())
-    assert len(case["comparisons"]) == 6
+    assert len(case["comparisons"]) == 9
+    comparison_variables = {item["variable"] for item in case["comparisons"]}
+    assert {
+        "porcentaje_hogares_agua_red_publica_2022",
+        "porcentaje_viviendas_rancho_casilla_2022",
+        "localizaciones_por_100_km2_2022",
+    }.issubset(comparison_variables)
     assert {item["variable"] for item in case["comparisons"]}.issubset(case["structural_variables"])
     assert not any(
         outcome in item["variable"]
@@ -196,3 +204,9 @@ def test_guided_case_resolves_existing_ramón_lista_quebrachos_pair(profiles):
 @pytest.mark.parametrize("territory_id", ["70070", "34063", "42147", "02007", "06861", "06182"])
 def test_real_validation_cases_have_one_profile(profiles, territory_id):
     assert len(profiles[profiles.departamento_id.eq(territory_id)]) == 1
+
+
+def test_radar_limits_rendered_rows_without_losing_total(signals):
+    assert len(visible_signal_rows(signals, 40)) == 40
+    assert len(visible_signal_rows(signals, 80)) == 80
+    assert len(signals) > len(visible_signal_rows(signals, 40))
