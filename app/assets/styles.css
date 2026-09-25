@@ -694,6 +694,10 @@ body:has(.functional-view--methodology) [data-testid="stExpander"] details > div
 .st-key-story_intro button[data-testid="stBaseButton-secondary"], .st-key-story_intro [data-testid="stButton"] button[kind="secondary"] { background: var(--paper); border-color: var(--ochre); color: var(--forest); }
 .st-key-story_intro button[data-testid="stBaseButton-secondary"]:hover, .st-key-story_intro [data-testid="stButton"] button[kind="secondary"]:hover { background: var(--forest-soft); border-color: var(--forest); color: var(--forest); }
 .st-key-story_intro [data-testid="stButton"] button p { color: inherit; }
+.st-key-story_intro button[data-testid="stBaseButton-primary"] p,
+.st-key-story_intro [data-testid="stButton"] button[kind="primary"] p { color: var(--paper) !important; }
+.st-key-story_intro button[data-testid="stBaseButton-primary"]:hover p,
+.st-key-story_intro [data-testid="stButton"] button[kind="primary"]:hover p { color: var(--forest) !important; }
 .story-section { border-top: 1px solid var(--border); margin-top: var(--story-space-xl); padding: 1.75rem 0 2.6rem; }
 .story-section > h2 { font-size: clamp(2.25rem, 5.3vw, 4.85rem); margin: .9rem 0 3.5rem; max-width: 950px; text-transform: uppercase; }
 .story-averages { border-top: 1px solid var(--ink); }

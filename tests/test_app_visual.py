@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 import pandas as pd
 
@@ -17,6 +18,21 @@ from app.components.story_visuals import national_trajectory_svg, territory_mesh
 from app.components.data import load_national_history
 from app.components.mapa import load_geojson
 from app.components.ui import coverage_text, profile_sentence
+
+
+def test_story_primary_cta_targets_streamlit_text_without_affecting_secondary_cta():
+    styles = Path("app/assets/styles.css").read_text(encoding="utf-8")
+    primary_text = (
+        '.st-key-story_intro [data-testid="stButton"] button[kind="primary"] p '
+        '{ color: var(--paper) !important; }'
+    )
+    primary_hover_text = (
+        '.st-key-story_intro [data-testid="stButton"] button[kind="primary"]:hover p '
+        '{ color: var(--forest) !important; }'
+    )
+    assert primary_text in styles
+    assert primary_hover_text in styles
+    assert 'button[kind="secondary"] p { color: var(--paper) !important; }' not in styles
 
 
 def test_map_selection_reads_location():
